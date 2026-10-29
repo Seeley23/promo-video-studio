@@ -5,7 +5,7 @@ Wygląd: brands/deweloperuch/brand.json – papier, tabliczka rysunkowa, chmurka
 
 | Czas | Obraz | Napis | Lektor |
 |---|---|---|---|
-| 0–3 s | Ogłoszenie dewelopera z hasłem „słoneczne” (przykład); słowo dostaje znak zapytania | „Słoneczne” to nie godzina | Ogłoszenie mówi „słoneczne”. Ale o której? |
+| 0–3 s | Ogłoszenie dewelopera z hasłami „słoneczne”, „funkcjonalny układ” (przykład); przy hasłach pojawiają się znaki zapytania | Czy naprawdę znasz to mieszkanie? | Czy naprawdę znasz mieszkanie, które chcesz kupić? |
 | 3–8 s | Arkusz z rzutem (tabliczka rysunkowa). Cynobrowa chmurka rewizji obrysowuje przedpokój i drzwi, które otwierają się na siebie | Rzut nie mówi, czy zmieszczą się meble | Rzut nie powie, czy zmieszczą się meble ani czy drzwi nie uderzą o siebie. |
 | 8–10,5 s | Znak i napis Deweloperuch rysują się jak na arkuszu | Sprawdź mieszkanie, zanim podpiszesz umowę | Deweloperuch sprawdzi to za ciebie. |
 | 10,5–15 s | Kroki aplikacji: wklejenie treści ogłoszenia, upload PDF z rzutem | Wklejasz ogłoszenie i rzut | Wklejasz ogłoszenie i rzut. Zwykle po trzech minutach masz raport. |
