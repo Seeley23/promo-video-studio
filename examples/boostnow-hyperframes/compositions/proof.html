@@ -1,0 +1,93 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #p-stage { position: absolute; inset: 0; }
+    #p-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+    /* Rebuilt from client/src/components/ResultsSection.tsx at 1x */
+    #p-sec { position: absolute; left: 384px; top: 210px; width: 1152px; font-family: "Inter", sans-serif; }
+    #p-head { text-align: center; margin-bottom: 40px; }
+    #p-kicker { display: inline-block; font-size: 14px; font-weight: 500; color: #aef512; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 16px; }
+    #p-h2 { font: 700 48px/1.1 "Poppins"; color: #ebeff5; }
+    #p-h2 .g { background: linear-gradient(135deg, #aef512 0%, #00e8ae 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    #p-card { border-radius: 16px; background: #06090f; border: 1px solid #1f2227; overflow: hidden; display: grid; grid-template-columns: 7fr 5fr; }
+    #p-left { padding: 32px; }
+    #p-badge { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    #p-ico { width: 40px; height: 40px; border-radius: 8px; background: rgba(174,245,18,.1); display: flex; align-items: center; justify-content: center; }
+    #p-ind { font-size: 14px; font-weight: 500; color: #aef512; }
+    .p-h4 { font-size: 12px; font-weight: 500; color: #7d8086; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
+    .p-txt { font-size: 16px; line-height: 26px; }
+    #p-right { background: rgba(18,22,29,.3); padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+    #p-right .p-h4 { color: #aef512; margin-bottom: 24px; }
+    .p-res { display: flex; align-items: center; justify-content: space-between; }
+    .p-res + .p-res { margin-top: 16px; }
+    .p-res span:first-child { font-size: 14px; color: #7d8086; }
+    .p-res span:last-child { font: 700 24px/32px "Poppins"; color: #aef512; font-variant-numeric: tabular-nums; }
+  </style>
+  <div id="root" data-composition-id="proof" data-width="1920" data-height="1080">
+    <div id="p-stage" class="clip" data-start="0" data-duration="4.2" data-track-index="0">
+      <div id="p-cam">
+        <div id="p-sec">
+          <div id="p-head">
+            <span id="p-kicker">Rezultaty</span>
+            <h2 id="p-h2">Mierzalne <span class="g">dowody</span></h2>
+          </div>
+          <div id="p-card">
+            <div id="p-left">
+              <div id="p-badge">
+                <div id="p-ico">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#aef512" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                </div>
+                <span id="p-ind">E-commerce</span>
+              </div>
+              <div style="margin-bottom:24px">
+                <h4 class="p-h4">Wyzwanie</h4>
+                <p class="p-txt" style="color:#ebeff5">Niski współczynnik konwersji mimo wysokiego ruchu na stronie. Klienci porzucali koszyki.</p>
+              </div>
+              <div>
+                <h4 class="p-h4">Strategia BoostNow</h4>
+                <p class="p-txt" style="color:#7d8086">Wdrożenie psychologii pilności i awersji do straty. Redesign ścieżki zakupowej z elementami social proof.</p>
+              </div>
+            </div>
+            <div id="p-right">
+              <h4 class="p-h4">Wyniki</h4>
+              <div class="p-res" id="p-r1"><span>Wzrost konwersji</span><span id="p-v1">+156%</span></div>
+              <div class="p-res"><span>Redukcja porzuceń</span><span id="p-v2">-42%</span></div>
+              <div class="p-res"><span>ROI kampanii</span><span id="p-v3">340%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const $ = (id) => document.getElementById(id);
+
+      // Establish the section at 1.4x so the copy is readable, then isolate the results.
+      const s0 = 1.4;
+      const cx0 = 384 + 576, cy0 = 210 + 230;
+      tl.fromTo("#p-cam", { scale: s0 * 1.05, x: 960 - s0 * 1.05 * cx0, y: 540 - s0 * 1.05 * cy0, filter: "blur(10px)" },
+        { scale: s0, x: 960 - s0 * cx0, y: 540 - s0 * cy0, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 0);
+
+      // Results count up, one after another (values from the site).
+      const vals = [[1, "+", 156, "%"], [2, "-", 42, "%"], [3, "", 340, "%"]];
+      vals.forEach(([i, pre, to, suf], k) => {
+        const o = { v: 0 };
+        $("p-v" + i).textContent = pre + "0" + suf;
+        tl.fromTo(o, { v: 0 }, { v: to, duration: 1.2, ease: "power2.out",
+          onUpdate: () => { $("p-v" + i).textContent = pre + Math.round(o.v) + suf; } }, 0.45 + k * 0.2);
+      });
+
+      // Push in on the hero result: +156% conversion.
+      // Measured in Chrome at 1x: centre of the "Wzrost konwersji" row (scene layout is not measurable before it shows).
+      const cx = 1295.4, cy = 523.1 + 20;
+      const s1 = 3.0;
+      tl.to("#p-cam", { scale: s1, x: 960 - s1 * cx, y: 540 - s1 * cy, duration: 0.6, ease: "power2.inOut" }, 2.5);
+
+      // Zoom through into the end card.
+      tl.to("#p-stage", { opacity: 0, filter: "blur(14px)", duration: 0.2, ease: "power3.in" }, 4.0);
+      window.__timelines["proof"] = tl;
+    })();
+  </script>
+</template>

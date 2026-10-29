@@ -1,0 +1,115 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #e-stage { position: absolute; inset: 0; }
+    #e-head { position: absolute; left: 140px; top: 120px; font: 600 40px/1.2 "Poppins"; color: #a3e635; }
+    .e-beat { position: absolute; inset: 0; }
+    .e-card {
+      position: absolute; left: 140px; top: 300px; width: 760px; height: 560px;
+      background: rgba(17,24,39,.5); border: 2px solid #1f2937; border-radius: 16px;
+      padding: 56px 56px; display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .e-idx { font: 600 30px/1 "Inter"; color: #7d8086; margin-bottom: 26px; }
+    .e-title { font: 700 108px/1 "Poppins"; letter-spacing: -3px; color: #fff; }
+    .e-art { position: absolute; left: 1000px; top: 300px; width: 780px; height: 560px; }
+
+    /* 1. Overload: words pile up */
+    .e-word { position: absolute; font: 900 64px/1 "Inter"; padding: 14px 22px; border-radius: 12px; white-space: nowrap; }
+
+    /* 2. No priorities: the eye jumps between equal boxes */
+    #e-grid { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    #e-grid div { background: #12161d; border: 2px solid #1f2227; border-radius: 14px; }
+    #e-eye { position: absolute; left: 0; top: 0; width: 245px; height: 172px; border: 6px solid #aef512; border-radius: 16px; }
+
+    /* 3. Effort: loading crawls */
+    #e-load { position: absolute; left: 0; top: 200px; width: 780px; }
+    #e-load-label { font: 600 40px/1.2 "Inter"; color: #ebeff5; display: flex; justify-content: space-between; }
+    #e-load-label span:last-child { color: #7d8086; font-variant-numeric: tabular-nums; }
+    #e-track { margin-top: 30px; height: 22px; border-radius: 11px; background: #181b1f; overflow: hidden; }
+    #e-fill { width: 100%; height: 100%; background: #7d8086; transform-origin: left center; }
+  </style>
+  <div id="root" data-composition-id="errors" data-width="1920" data-height="1080">
+    <div id="e-stage" class="clip" data-start="0" data-duration="4.4" data-track-index="0">
+      <div id="e-head">Twoje straty wynikają z trzech błędów:</div>
+
+      <div id="e-b1" class="e-beat">
+        <div class="e-card"><div class="e-idx">Błąd 1</div><div class="e-title">Przeładowanie</div></div>
+        <div class="e-art" id="e-pile">
+          <span class="e-word" style="left:20px;top:30px;background:#e11d48;color:#fff">-50%</span>
+          <span class="e-word" style="left:300px;top:10px;background:#facc15;color:#111">NOWOŚĆ</span>
+          <span class="e-word" style="left:120px;top:150px;background:#2563eb;color:#fff">TYLKO DZIŚ</span>
+          <span class="e-word" style="left:420px;top:190px;background:#16a34a;color:#fff">GRATIS*</span>
+          <span class="e-word" style="left:0px;top:290px;background:#f97316;color:#fff">KUP TERAZ</span>
+          <span class="e-word" style="left:360px;top:330px;background:#fff;color:#111">SPRAWDŹ</span>
+          <span class="e-word" style="left:90px;top:430px;background:#a855f7;color:#fff">RATY 0%</span>
+          <span class="e-word" style="left:400px;top:450px;background:#e11d48;color:#fff">HIT!!!</span>
+        </div>
+      </div>
+
+      <div id="e-b2" class="e-beat">
+        <div class="e-card"><div class="e-idx">Błąd 2</div><div class="e-title">Brak<br />priorytetów</div></div>
+        <div class="e-art">
+          <div id="e-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          <div id="e-eye"></div>
+        </div>
+      </div>
+
+      <div id="e-b3" class="e-beat">
+        <div class="e-card"><div class="e-idx">Błąd 3</div><div class="e-title">Wysiłek</div></div>
+        <div class="e-art">
+          <div id="e-load">
+            <div id="e-load-label"><span>Rozumiem ofertę…</span><span id="e-pct">0%</span></div>
+            <div id="e-track"><div id="e-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const B1 = 0, B2 = 1.45, B3 = 2.9;
+
+      // Header arrives with the scene and holds.
+      tl.fromTo("#e-head", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.05);
+
+      // Beat visibility is a blur swap on one stage.
+      function swapIn(sel, t) {
+        tl.fromTo(sel, { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out" }, t);
+      }
+      function swapOut(sel, t) {
+        tl.to(sel, { opacity: 0, filter: "blur(10px)", duration: 0.14, ease: "power3.in" }, t);
+      }
+      tl.set(["#e-b2", "#e-b3"], { opacity: 0 }, 0);
+
+      // 1. Overload: the card drops in from above (carried from the flicked ad), words pile up.
+      tl.fromTo("#e-b1 .e-card", { y: -700, filter: "blur(14px)" }, { y: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, B1);
+      tl.fromTo("#e-pile .e-word", { scale: 0, rotation: (i) => (i % 2 ? 9 : -7) }, {
+        scale: 1, rotation: (i) => (i % 2 ? 6 : -5), duration: 0.28, ease: "back.out(1.6)", stagger: 0.09,
+      }, B1 + 0.2);
+      swapOut("#e-b1", B2 - 0.14);
+
+      // 2. No priorities: highlight jumps between equal boxes, never settles.
+      swapIn("#e-b2", B2);
+      const cells = [[0,0],[2,1],[1,2],[0,1],[2,0],[1,0],[0,2],[2,2]];
+      const cw = (780 - 44) / 3, ch = (560 - 44) / 3;
+      cells.forEach(([c, r], i) => {
+        tl.set("#e-eye", { x: c * (cw + 22), y: r * (ch + 22), width: cw, height: ch }, B2 + 0.1 + i * 0.15);
+      });
+      swapOut("#e-b2", B3 - 0.14);
+
+      // 3. Effort: loading crawls and stalls.
+      swapIn("#e-b3", B3);
+      const pct = document.getElementById("e-pct");
+      const prog = { v: 0 };
+      tl.fromTo("#e-fill", { scaleX: 0 }, { scaleX: 0.12, duration: 1.3, ease: "power2.out" }, B3 + 0.1);
+      tl.fromTo(prog, { v: 0 }, { v: 12, duration: 1.3, ease: "power2.out",
+        onUpdate: () => { pct.textContent = Math.round(prog.v) + "%"; } }, B3 + 0.1);
+
+      // Dip cut into the calculator.
+      tl.to("#e-stage", { opacity: 0.6, duration: 0.1, ease: "none" }, 4.3);
+
+      window.__timelines["errors"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,101 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #h-stage { position: absolute; inset: 0; }
+
+    /* The overloaded ad: the "old way" */
+    #h-ad {
+      position: absolute; left: 120px; top: 110px; width: 1000px; height: 860px;
+      background: #f4f1ea; border-radius: 20px; overflow: hidden; color: #1a1a1a;
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      font-family: "Inter", sans-serif;
+    }
+    #h-ad .band { background: #e11d48; color: #fff; font: 900 64px/1 "Inter"; padding: 28px 36px; letter-spacing: -1px; }
+    #h-ad .row { display: flex; gap: 16px; padding: 22px 36px 0; flex-wrap: wrap; }
+    #h-ad .chip { background: #facc15; color: #111; font: 800 30px/1 "Inter"; padding: 14px 20px; border-radius: 10px; }
+    #h-ad .chip.blue { background: #2563eb; color: #fff; }
+    #h-ad .chip.green { background: #16a34a; color: #fff; }
+    #h-ad .big { font: 900 92px/1 "Inter"; color: #e11d48; padding: 26px 36px 0; letter-spacing: -3px; }
+    #h-ad .small { font: 400 28px/1.35 "Inter"; color: #444; padding: 16px 36px 0; }
+    #h-ad .btns { display: flex; gap: 14px; padding: 26px 36px 0; flex-wrap: wrap; }
+    #h-ad .btn { font: 800 30px/1 "Inter"; padding: 20px 24px; border-radius: 12px; border: 3px solid #111; }
+    #h-ad .btn.a { background: #111; color: #fff; }
+    #h-ad .btn.b { background: #f97316; color: #fff; border-color: #f97316; }
+    #h-ad .btn.c { background: #fff; }
+    #h-ad .stars { font: 700 30px/1 "Inter"; color: #b45309; padding: 26px 36px 0; }
+    #h-ad .fine { font: 400 22px/1.3 "Inter"; color: #777; padding: 18px 36px 0; }
+
+    /* Timer column */
+    #h-timer { position: absolute; left: 1220px; top: 170px; width: 600px; }
+    #h-digits { font: 700 260px/0.9 "Poppins"; letter-spacing: -10px; color: var(--color-ink, #ebeff5); font-variant-numeric: tabular-nums; }
+    #h-digits .unit { font-size: 120px; letter-spacing: -2px; color: #7d8086; margin-left: 18px; }
+    #h-bar { margin-top: 36px; width: 560px; height: 14px; border-radius: 7px; background: #181b1f; overflow: hidden; }
+    #h-bar-fill { width: 100%; height: 100%; background: #aef512; transform-origin: left center; }
+    #h-title { margin-top: 70px; font: 700 84px/1.05 "Poppins"; letter-spacing: -2px; color: #ebeff5; }
+    #h-title .acc { color: #aef512; }
+    #h-sub { margin-top: 22px; font: 400 32px/1.35 "Inter"; color: #7d8086; max-width: 560px; }
+
+    /* Thumb flick */
+    #h-thumb {
+      position: absolute; left: 560px; top: 1180px; width: 150px; height: 230px;
+      border-radius: 75px 75px 60px 60px; background: #e8b894;
+      box-shadow: inset -14px -10px 0 rgba(0,0,0,.12);
+    }
+    #h-thumb .nail { position: absolute; left: 30px; top: 18px; width: 90px; height: 80px; border-radius: 40px 40px 30px 30px; background: #f5d7c3; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+    <div id="h-stage" class="clip" data-start="0" data-duration="3.6" data-track-index="0">
+      <div id="h-ad">
+        <div class="band">MEGA PROMOCJA!!! -50%</div>
+        <div class="row">
+          <span class="chip">NOWOŚĆ</span><span class="chip blue">TYLKO DZIŚ</span>
+          <span class="chip green">DARMOWA DOSTAWA*</span><span class="chip">HIT 2026</span>
+        </div>
+        <div class="big">KUP 3, ZAPŁAĆ ZA 2</div>
+        <div class="small" data-layout-ignore>Najlepsza jakość na rynku, gwarancja 5 lat, raty 0%, zwrot do 30 dni, program lojalnościowy, kody rabatowe, punkty za zakupy i wiele więcej!</div>
+        <div class="btns">
+          <span class="btn a">KUP TERAZ</span><span class="btn b">SPRAWDŹ</span>
+          <span class="btn c">ZAPISZ SIĘ</span><span class="btn c">POBIERZ</span>
+        </div>
+        <div class="stars">★★★★★ 4,9/5 · 12 000+ opinii · Polecane</div>
+        <div class="fine" data-layout-ignore>*Regulamin promocji dostępny na stronie. Oferta ważna do wyczerpania zapasów. Nie łączy się z innymi promocjami.</div>
+      </div>
+      <div id="h-timer">
+        <div id="h-digits"><span id="h-num">0.4</span><span class="unit">s</span></div>
+        <div id="h-bar"><div id="h-bar-fill"></div></div>
+        <h1 id="h-title">Masz <span class="acc">0.4</span> sekundy.</h1>
+      </div>
+      <div id="h-thumb"><div class="nail"></div></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const num = document.getElementById("h-num");
+      const clock = { v: 0.4 };
+
+      // Frame 0 already shows the ad and the timer: it is the thumbnail.
+      tl.fromTo("#h-ad", { scale: 1.04, rotation: -1.2 }, { scale: 1, rotation: -1.2, duration: 0.6, ease: "expo.out" }, 0);
+
+      // The 0.4 s budget drains while the viewer looks.
+      tl.fromTo("#h-bar-fill", { scaleX: 1 }, { scaleX: 0, duration: 2.4, ease: "none" }, 0.25);
+      tl.fromTo(clock, { v: 0.4 }, {
+        v: 0, duration: 2.4, ease: "none",
+        onUpdate: () => { num.textContent = clock.v.toFixed(1); },
+      }, 0.25);
+
+      // Title blurs in as one line and then holds still.
+      tl.fromTo("#h-title", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.45);
+
+      // The thumb comes in and flicks the ad away before the timer hits zero.
+      tl.fromTo("#h-thumb", { y: 0, rotation: -8 }, { y: -560, rotation: -4, duration: 0.5, ease: "expo.out" }, 1.85);
+      tl.to("#h-thumb", { y: -1500, rotation: 6, duration: 0.32, ease: "power3.in" }, 2.45);
+      tl.to("#h-ad", { y: -1250, rotation: -4, filter: "blur(18px)", duration: 0.32, ease: "power3.in" }, 2.5);
+
+      // Whip into the next scene: the timer column leaves upward too.
+      tl.to("#h-timer", { y: -1150, filter: "blur(16px)", duration: 0.3, ease: "power3.in" }, 3.25);
+
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>

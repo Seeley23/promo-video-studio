@@ -1,0 +1,36 @@
+{
+  "name": "Nazwa marki",
+  "url": "example.com",
+  "language": "pl",
+  "colors": {
+    "ground": "#05070C",
+    "card": "#06090F",
+    "ink": "#EBEFF5",
+    "muted": "#7D8086",
+    "border": "#1F2227",
+    "accent": "#AEF512",
+    "accentInk": "#0B0E14"
+  },
+  "fonts": {
+    "display": { "family": "Poppins", "weight": 700 },
+    "body": { "family": "Inter", "weight": 400 }
+  },
+  "logo": {
+    "file": "logo.svg",
+    "onDark": true,
+    "note": "Plik logo marki, nigdy rysowany od nowa."
+  },
+  "cta": {
+    "label": "Tekst przycisku CTA ze strony",
+    "url": "example.com"
+  },
+  "voice": {
+    "provider": "heygen | elevenlabs | kokoro | none",
+    "voiceId": "",
+    "language": "pl"
+  },
+  "source": {
+    "repo": "owner/repo",
+    "notes": "Skąd wzięto kolory, fonty, teksty (pliki i linie)."
+  }
+}

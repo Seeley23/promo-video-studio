@@ -1,0 +1,51 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #v-stage { position: absolute; inset: 0; }
+    /* From SolutionSection.tsx: emoji, title in lime-400, description in gray-400 */
+    #v-emoji-box { position: absolute; left: 160px; top: 390px; width: 300px; height: 300px; overflow: hidden; }
+    .v-emoji { position: absolute; left: 0; top: 0; width: 300px; height: 300px; font-size: 220px; line-height: 300px; text-align: center; }
+    #v-word-box { position: absolute; left: 520px; top: 455px; width: 1300px; height: 170px; overflow: hidden; }
+    .v-word { position: absolute; left: 0; top: 0; font: 700 150px/170px "Poppins"; letter-spacing: -4px; color: #a3e635; white-space: nowrap; }
+    #v-count { position: absolute; left: 526px; top: 380px; font: 600 34px/1 "Inter"; color: #7d8086; font-variant-numeric: tabular-nums; }
+  </style>
+  <div id="root" data-composition-id="verbs" data-width="1920" data-height="1080">
+    <div id="v-stage" class="clip" data-start="0" data-duration="5.2" data-track-index="0">
+      <div id="v-count"><span id="v-n">1</span> / 3</div>
+      <div id="v-emoji-box" data-layout-allow-overlap>
+        <div class="v-emoji" id="v-e1">✂️</div>
+        <div class="v-emoji" id="v-e2">👁️</div>
+        <div class="v-emoji" id="v-e3">🏗️</div>
+      </div>
+      <div id="v-word-box" data-layout-allow-overlap>
+        <div class="v-word" id="v-w1">Usuwamy opór</div>
+        <div class="v-word" id="v-w2">Hakujemy uwagę</div>
+        <div class="v-word" id="v-w3">Dowozimy ROI</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const T = [0, 1.7, 3.4];
+      const n = document.getElementById("v-n");
+
+      // Enter from the whip: the first set lands blurred and sharpens.
+      tl.fromTo("#v-stage", { x: 1920, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 0);
+      tl.set(["#v-w2", "#v-w3"], { yPercent: 100 }, 0);
+      tl.set(["#v-e2", "#v-e3"], { yPercent: 100 }, 0);
+
+      // Slot machine: each verb rolls up and replaces the last; the description swaps with it.
+      [2, 3].forEach((i, k) => {
+        const t = T[k + 1];
+        tl.to("#v-w" + (i - 1), { yPercent: -130, opacity: 0, duration: 0.28, ease: "power3.in" }, t);
+        tl.fromTo("#v-w" + i, { yPercent: 100 }, { yPercent: 0, duration: 0.4, ease: "expo.out" }, t + 0.2);
+        tl.to("#v-e" + (i - 1), { yPercent: -130, opacity: 0, duration: 0.28, ease: "power3.in" }, t + 0.03);
+        tl.fromTo("#v-e" + i, { yPercent: 100 }, { yPercent: 0, duration: 0.4, ease: "expo.out" }, t + 0.23);
+        tl.set(n, { textContent: String(i) }, t + 0.2);
+      });
+
+      window.__timelines["verbs"] = tl;
+    })();
+  </script>
+</template>

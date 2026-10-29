@@ -1,0 +1,50 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #r-stage { position: absolute; inset: 0; }
+    /* Same total card as the end of the calculator scene, same place and scale. */
+    #r-card {
+      position: absolute; left: 1320px; top: 540px; width: 560px; margin-left: -280px; margin-top: -66px;
+      transform-origin: 50% 50%;
+      border-radius: 12px; border: 1px solid #b91c1c; text-align: center; padding: 20px 24px;
+      background: linear-gradient(135deg, rgba(127,29,29,.6), rgba(127,29,29,.4)); font-family: "Inter", sans-serif;
+    }
+    #r-card .s { color: #d1d5db; font-size: 14px; line-height: 20px; margin-bottom: 6px; }
+    #r-card .x { color: #f87171; font-size: 36px; line-height: 40px; font-weight: 700; }
+    #r-card .n { color: #9ca3af; font-size: 14px; line-height: 20px; margin-top: 6px; }
+    #r-logo { position: absolute; left: 460px; top: 230px; width: 1000px; }
+    #r-logo img { width: 1000px; display: block; }
+    #r-line { position: absolute; left: 0; right: 0; top: 820px; text-align: center; font: 700 72px/1 "Poppins"; letter-spacing: -1.5px; color: #ebeff5; }
+    #r-line .acc { color: #aef512; }
+  </style>
+  <div id="root" data-composition-id="reveal" data-width="1920" data-height="1080">
+    <div id="r-stage" class="clip" data-start="0" data-duration="2.6" data-track-index="0">
+      <div id="r-card">
+        <p class="s">💔 Całkowita strata miesięczna</p>
+        <p class="x">15 375 zł</p>
+        <p class="n">To 513 PLN dziennie</p>
+      </div>
+      <div id="r-logo"><img src="assets/logo.svg" alt="boostnow" /></div>
+      <div id="r-line">My to <span class="acc">zmieniamy.</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // Hold the carried card, then it collapses into the arrow of the mark.
+      tl.fromTo("#r-card", { scale: 1.9, x: 0, y: 0, opacity: 1 },
+        { scale: 0.02, x: 1390 - 1320, y: 315 - 540, opacity: 0.4, duration: 0.42, ease: "power3.in" }, 0.15);
+      tl.set("#r-card", { opacity: 0 }, 0.58);
+
+      // The mark wipes in from the left; it is the brand's own file.
+      tl.fromTo("#r-logo", { clipPath: "inset(0 100% 0 0)", scale: 0.96 },
+        { clipPath: "inset(0 0% 0 0)", scale: 1, duration: 0.55, ease: "expo.out" }, 0.52);
+
+      tl.fromTo("#r-line", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.05);
+
+      // Exit: the whole stage whips left into the verbs.
+      tl.to("#r-stage", { x: -1920, filter: "blur(18px)", duration: 0.3, ease: "power3.in" }, 2.3);
+      window.__timelines["reveal"] = tl;
+    })();
+  </script>
+</template>

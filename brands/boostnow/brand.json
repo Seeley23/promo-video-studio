@@ -1,0 +1,37 @@
+{
+  "name": "BoostNow",
+  "url": "boostnow.pl",
+  "language": "pl",
+  "colors": {
+    "ground": "#05070C",
+    "card": "#06090F",
+    "ink": "#EBEFF5",
+    "muted": "#7D8086",
+    "border": "#1F2227",
+    "accent": "#AEF512",
+    "accentInk": "#0B0E14",
+    "accent2": "#00E8AE"
+  },
+  "fonts": {
+    "display": { "family": "Poppins", "weight": 700 },
+    "body": { "family": "Inter", "weight": 400 }
+  },
+  "logo": {
+    "file": "logo.svg",
+    "onDark": true,
+    "note": "Logo ma własne tło #05070C – używaj tego koloru jako tła kadru z logo."
+  },
+  "cta": {
+    "label": "Zboostuj wyniki TERAZ",
+    "url": "boostnow.pl"
+  },
+  "voice": {
+    "provider": "heygen",
+    "voiceId": "",
+    "language": "pl"
+  },
+  "source": {
+    "repo": "Seeley23/boostnow",
+    "notes": "Kolory: client/src/index.css (oklch → hex). Fonty: index.css, fonts.css. CTA: HeroSection.tsx. Logo: client/public/images/logo.svg."
+  }
+}

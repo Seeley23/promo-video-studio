@@ -1,0 +1,42 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #x-stage { position: absolute; inset: 0; background: #05070c; }
+    #x-logo { position: absolute; left: 680px; top: 170px; width: 560px; }
+    #x-logo img { width: 560px; display: block; }
+    /* CTA from HeroSection.tsx: bg-primary, Poppins semibold, rounded-lg, glow-lime */
+    #x-cta {
+      position: absolute; left: 50%; top: 620px; transform: translateX(-50%);
+    }
+    #x-btn {
+      display: inline-flex; align-items: center; gap: 18px; padding: 30px 58px; border-radius: 14px;
+      background: #aef512; color: #0b0e14; font: 600 46px/1 "Poppins"; white-space: nowrap;
+      box-shadow: 0 0 40px rgba(174,245,18,.3), 0 0 80px rgba(174,245,18,.1);
+    }
+    #x-url { position: absolute; left: 0; right: 0; top: 800px; text-align: center; font: 500 40px/1 "Inter"; color: #7d8086; letter-spacing: .5px; }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+    <div id="x-stage" class="clip" data-start="0" data-duration="3.4" data-track-index="0">
+      <div id="x-logo"><img src="assets/logo.svg" alt="boostnow" /></div>
+      <div id="x-cta">
+        <div id="x-btn">Zboostuj wyniki TERAZ
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#0b0e14" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div id="x-url">boostnow.pl</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#x-stage", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "none" }, 0);
+      // The mark is wiped in, then the call to action lands and everything holds.
+      tl.fromTo("#x-logo", { clipPath: "inset(0 100% 0 0)", scale: 1.08 },
+        { clipPath: "inset(0 0% 0 0)", scale: 1, duration: 0.6, ease: "expo.out" }, 0.15);
+      tl.fromTo("#x-btn", { scale: 0.6, opacity: 0, filter: "blur(10px)" },
+        { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "back.out(1.4)" }, 0.75);
+      tl.fromTo("#x-url", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.05);
+      window.__timelines["endcard"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,176 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #c-stage { position: absolute; inset: 0; }
+    #c-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+
+    /* Rebuilt 1:1 from client/src/components/LossCalculator.tsx (Tailwind sizes at 1x) */
+    #c-page {
+      position: absolute; left: 0; top: 0; width: 1920px; height: 1080px;
+      background: linear-gradient(to bottom, rgba(17,24,39,.5), rgba(17,24,39,.3));
+      border-top: 1px solid #1f2937; font-family: "Inter", sans-serif;
+    }
+    #c-wrap { position: absolute; left: 384px; top: 28px; width: 1152px; }
+    #c-h1 { text-align: center; font: 700 48px/1 "Poppins"; color: #fff; margin-bottom: 16px; }
+    #c-lead { text-align: center; font: 400 18px/28px "Inter"; color: #9ca3af; max-width: 672px; margin: 0 auto 40px; }
+    #c-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .c-col { display: flex; flex-direction: column; }
+    .c-col.l > * + * { margin-top: 20px; }
+    .c-col.r > * + * { margin-top: 18px; }
+    .c-card { border-radius: 12px; border: 1px solid #1f2937; background: rgba(17,24,39,.8); padding: 20px 24px; }
+    .c-label { display: block; color: #fff; font-weight: 600; font-size: 16px; line-height: 24px; margin-bottom: 14px; }
+    .c-track { position: relative; height: 6px; border-radius: 999px; background: #181b1f; }
+    .c-range { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; border-radius: 999px; background: #aef512; transform-origin: left center; }
+    .c-thumb { position: absolute; top: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: #020306; border: 1px solid #aef512; box-shadow: 0 1px 2px rgba(0,0,0,.3); }
+    .c-hint { color: #6b7280; font-size: 14px; line-height: 20px; margin-top: 8px; }
+
+    .c-red { background: linear-gradient(135deg, rgba(127,29,29,.4), rgba(127,29,29,.2)); border-color: rgba(153,27,27,.5); }
+    .c-red2 { background: linear-gradient(135deg, rgba(127,29,29,.6), rgba(127,29,29,.4)); border-color: #b91c1c; }
+    .c-orange { background: linear-gradient(135deg, rgba(124,45,18,.6), rgba(124,45,18,.4)); border-color: #c2410c; }
+    .c-lime { background: linear-gradient(135deg, rgba(54,83,20,.4), rgba(54,83,20,.2)); border-color: rgba(63,98,18,.5); }
+    .c-h3 { color: #fff; font-weight: 700; font-size: 18px; line-height: 28px; margin-bottom: 12px; }
+    .c-row { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid rgba(153,27,27,.3); font-size: 16px; }
+    .c-row:last-child { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+    .c-row span:first-child { color: #d1d5db; }
+    .c-row span:last-child { color: #f87171; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .c-center { text-align: center; }
+    .c-small { color: #d1d5db; font-size: 14px; line-height: 20px; margin-bottom: 6px; }
+    .c-xl { font-size: 36px; line-height: 40px; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .c-note { color: #9ca3af; font-size: 14px; line-height: 20px; margin-top: 6px; }
+    #c-cta { width: 100%; padding: 16px 0; background: #84cc16; color: #000; font-weight: 700; font-size: 16px; border-radius: 8px; text-align: center; }
+
+    #c-title { position: absolute; left: 140px; top: 400px; width: 660px; font: 700 92px/1.05 "Poppins"; letter-spacing: -2px; color: #ebeff5; }
+    #c-title .acc { color: #aef512; }
+  </style>
+  <div id="root" data-composition-id="calc" data-width="1920" data-height="1080">
+    <div id="c-stage" class="clip" data-start="0" data-duration="6.6" data-track-index="0">
+      <div id="c-cam">
+        <div id="c-page">
+          <div id="c-wrap">
+            <h1 id="c-h1">Kalkulator Strat</h1>
+            <p id="c-lead">Oszacuj, ile pieniędzy tracisz każdego miesiąca przez błędy marketingowe. Wprowadź dane swojej firmy poniżej.</p>
+            <div id="c-grid">
+              <div class="c-col l" id="c-inputs">
+                <div class="c-card"><span class="c-label">📊 Przychód miesięczny: <b id="v-rev"></b></span>
+                  <div class="c-track"><div class="c-range" id="r-rev"></div><div class="c-thumb" id="t-rev"></div></div><p class="c-hint">10k - 500k PLN</p></div>
+                <div class="c-card"><span class="c-label">📈 Obecna konwersja: <b id="v-conv"></b></span>
+                  <div class="c-track"><div class="c-range" id="r-conv"></div><div class="c-thumb" id="t-conv"></div></div><p class="c-hint">0.5% - 10%</p></div>
+                <div class="c-card"><span class="c-label">💰 Średnia wartość zamówienia: <b id="v-aov"></b></span>
+                  <div class="c-track"><div class="c-range" id="r-aov"></div><div class="c-thumb" id="t-aov"></div></div><p class="c-hint">50 - 5000 PLN</p></div>
+                <div class="c-card"><span class="c-label">⚠️ Rezygnacja klientów: <b id="v-churn"></b></span>
+                  <div class="c-track"><div class="c-range" id="r-churn"></div><div class="c-thumb" id="t-churn"></div></div><p class="c-hint">5% - 50%</p></div>
+                <div class="c-card"><span class="c-label">👥 Wielkość zespołu: <b id="v-team"></b></span>
+                  <div class="c-track"><div class="c-range" id="r-team"></div><div class="c-thumb" id="t-team"></div></div><p class="c-hint">1 - 50 osób</p></div>
+              </div>
+              <div class="c-col r" id="c-results">
+                <div class="c-card c-red" id="c-breakdown">
+                  <h3 class="c-h3">📉 Rozbicie Strat</h3>
+                  <div class="c-row"><span>Utrata konwersji (przeładowanie):</span><span id="o-conv"></span></div>
+                  <div class="c-row"><span>Rezygnacja klientów (brak priorytetów):</span><span id="o-churn"></span></div>
+                  <div class="c-row"><span>Strata czasu zespołu (wysiłek):</span><span id="o-time"></span></div>
+                </div>
+                <div class="c-card c-red2 c-center" id="c-total">
+                  <p class="c-small">💔 Całkowita strata miesięczna</p>
+                  <p class="c-xl" style="color:#f87171" id="o-total"></p>
+                  <p class="c-note" id="o-daily"></p>
+                </div>
+                <div class="c-card c-orange c-center" id="c-annual">
+                  <p class="c-small">📊 Całkowita strata roczna</p>
+                  <p class="c-xl" style="color:#fb923c" id="o-annual"></p>
+                  <p class="c-note" id="o-months"></p>
+                </div>
+                <div class="c-card c-lime c-center" id="c-recovery">
+                  <p class="c-small">🚀 Potencjalny zwrot z BoostNow</p>
+                  <p class="c-xl" style="color:#a3e635;font-size:30px;line-height:36px" id="o-rec"></p>
+                  <p class="c-note" id="o-rec-y"></p>
+                </div>
+                <div id="c-cta">Zarezerwuj Bezpłatną Konsultację</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 id="c-title">Finansujesz <span class="acc">ignorancję</span> rynku.</h2>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const $ = (id) => document.getElementById(id);
+      const fmt = new Intl.NumberFormat("pl-PL", { style: "currency", currency: "PLN", minimumFractionDigits: 0, maximumFractionDigits: 0 });
+      const cur = (v) => fmt.format(v);
+
+      // Slider ranges and the site's default values (LossCalculator.tsx).
+      const R = {
+        rev: { min: 10000, max: 500000, step: 10000, to: 50000 },
+        conv: { min: 0.5, max: 10, step: 0.5, to: 2.5 },
+        aov: { min: 50, max: 5000, step: 50, to: 150 },
+        churn: { min: 5, max: 50, step: 1, to: 15 },
+        team: { min: 1, max: 50, step: 1, to: 5 },
+      };
+      const S = { rev: 10000, conv: 0.5, aov: 50, churn: 5, team: 1 };
+
+      function snap(k) { const r = R[k]; return Math.round((S[k] - r.min) / r.step) * r.step + r.min; }
+
+      // Same formula as the site's useMemo.
+      function render() {
+        const rev = snap("rev"), conv = snap("conv"), aov = snap("aov"), churn = snap("churn"), team = snap("team");
+        for (const k of Object.keys(R)) {
+          const f = (snap(k) - R[k].min) / (R[k].max - R[k].min);
+          $("r-" + k).style.transform = "scaleX(" + f + ")";
+          $("t-" + k).style.left = (f * 100) + "%";
+        }
+        $("v-rev").textContent = cur(rev);
+        $("v-conv").textContent = conv.toFixed(1) + "%";
+        $("v-aov").textContent = cur(aov);
+        $("v-churn").textContent = churn.toFixed(0) + "%";
+        $("v-team").textContent = team + " osób";
+        const cur_ = (rev / aov) * (conv / 100);
+        const pot = cur_ / 0.4;
+        const convLoss = Math.round((pot - cur_) * aov);
+        const churnLoss = Math.round((rev / aov) * (churn / 100) * aov);
+        const timeLoss = Math.round(team * 4000 * 0.3);
+        const total = Math.round((pot - cur_) * aov + (rev / aov) * (churn / 100) * aov + team * 4000 * 0.3);
+        const annual = total * 12;
+        const rec = Math.round(total * 380 / 100);
+        $("o-conv").textContent = cur(convLoss) + "/msc";
+        $("o-churn").textContent = cur(churnLoss) + "/msc";
+        $("o-time").textContent = cur(timeLoss) + "/msc";
+        $("o-total").textContent = cur(total);
+        $("o-daily").textContent = "To " + Math.round(total / 30) + " PLN dziennie";
+        $("o-annual").textContent = cur(annual);
+        $("o-months").textContent = "Równowartość " + Math.round(annual / 50000) + " pełnych miesięcy przychodu";
+        $("o-rec").textContent = cur(rec) + "/msc";
+        $("o-rec-y").textContent = "Średni wzrost konwersji +380% = " + cur(rec * 12) + " rocznie";
+      }
+      render();
+
+      // The new screen comes in slightly large and settles (whole calculator: the workspace).
+      tl.fromTo("#c-cam", { scale: 1.06, x: -57.6, y: -32.4, filter: "blur(10px)" },
+        { scale: 1, x: 0, y: 0, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 0);
+
+      // Sliders move one after another; the results recompute live, like on the site.
+      const order = ["rev", "conv", "aov", "churn", "team"];
+      order.forEach((k, i) => {
+        tl.to(S, { [k]: R[k].to, duration: 0.5, ease: "power2.inOut", onUpdate: render }, 0.35 + i * 0.36);
+      });
+
+      // Camera: push in on the monthly total (the one number that matters).
+      // Measured in Chrome at 1x: centre of the monthly total card.
+      const cx = 1256, cy = 497.2;
+      const s1 = 1.8, s2 = 1.9;
+      tl.to("#c-cam", { scale: s1, x: 960 - s1 * cx, y: 470 - s1 * cy, duration: 0.6, ease: "power2.inOut" }, 2.4);
+
+      // Carry: everything but the total clears; the total moves right for the line.
+      const others = ["#c-h1", "#c-lead", "#c-inputs", "#c-breakdown", "#c-annual", "#c-recovery", "#c-cta"];
+      tl.to(others, { opacity: 0, filter: "blur(14px)", duration: 0.3, ease: "power3.in" }, 3.7);
+      tl.to("#c-page", { background: "rgba(2,3,6,0)", borderTopColor: "rgba(0,0,0,0)", duration: 0.3, ease: "power2.inOut" }, 3.7);
+      tl.to("#c-cam", { scale: s2, x: 1320 - s2 * cx, y: 540 - s2 * cy, duration: 0.55, ease: "power2.inOut" }, 3.75);
+
+      tl.fromTo("#c-title", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 4.1);
+      tl.to("#c-title", { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power3.in" }, 6.42);
+
+      window.__timelines["calc"] = tl;
+    })();
+  </script>
+</template>
