@@ -1,0 +1,45 @@
+{
+  "voice_id": "<premade-voice-id>",
+  "model": "eleven_multilingual_v2",
+  "output_format": "mp3_44100_128",
+  "voice_settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+  },
+  "lines": [
+    {
+      "id": "hook",
+      "text": "Czy naprawdę znasz to mieszkanie?"
+    },
+    {
+      "id": "plan",
+      "text": "Rzut nie mówi, czy zmieszczą się meble"
+    },
+    {
+      "id": "reveal",
+      "text": "Sprawdź mieszkanie, zanim podpiszesz umowę"
+    },
+    {
+      "id": "steps",
+      "text": "Wklejasz ogłoszenie i rzut"
+    },
+    {
+      "id": "sun",
+      "text": "Godziny słońca w każdym pokoju"
+    },
+    {
+      "id": "price",
+      "text": "Cena na tle transakcji z okolicy"
+    },
+    {
+      "id": "argue",
+      "text": "Z czym idziesz do dewelopera"
+    },
+    {
+      "id": "end",
+      "text": "Zamów raport — 179 zł"
+    }
+  ]
+}

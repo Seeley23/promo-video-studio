@@ -1,0 +1,13 @@
+{
+  "fps": 30,
+  "scenes": [
+    { "id": "hook",   "start": 0.0,  "end": 3.0,  "vo_at": 0.2 },
+    { "id": "plan",   "start": 3.0,  "end": 8.0,  "vo_at": 3.2 },
+    { "id": "reveal", "start": 8.0,  "end": 10.5, "vo_at": 8.3 },
+    { "id": "steps",  "start": 10.5, "end": 15.0, "vo_at": 10.7 },
+    { "id": "sun",    "start": 15.0, "end": 19.0, "vo_at": 15.2 },
+    { "id": "price",  "start": 19.0, "end": 23.5, "vo_at": 19.2 },
+    { "id": "argue",  "start": 23.5, "end": 27.0, "vo_at": 23.7 },
+    { "id": "end",    "start": 27.0, "end": 30.0, "vo_at": 27.2 }
+  ]
+}
