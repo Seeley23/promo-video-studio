@@ -1,0 +1,38 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #l-stage { position: absolute; inset: 0; }
+    #l-lock { position: absolute; left: 470px; top: 300px; display: flex; align-items: center; gap: 44px; }
+    #l-mark { width: 190px; height: 190px; overflow: visible; }
+    #l-mark rect, #l-mark path { fill: none; stroke: var(--color-ink); stroke-width: 1.6; }
+    #l-word { font: 400 150px/1 var(--serif); letter-spacing: -3px; color: var(--color-ink); }
+    #l-line { position: absolute; left: 470px; top: 600px; width: 1100px; font: 300 76px/1.08 var(--serif); letter-spacing: -2px; color: var(--color-ink); }
+    #l-line em { font-style: italic; }
+    #l-rule { position: absolute; left: 470px; top: 548px; width: 980px; height: 6px; border-top: 3px solid var(--color-ink); border-bottom: 1px solid var(--color-ink); transform-origin: left center; }
+  </style>
+  <div id="root" data-composition-id="logo" data-width="1920" data-height="1080">
+    <div id="l-stage" class="clip" data-start="0" data-duration="2.5" data-track-index="0">
+      <div id="l-lock">
+        <svg id="l-mark" viewBox="0 0 32 32"><rect id="l-r" x="1" y="1" width="30" height="30" pathLength="1"/><path id="l-h" d="M7 25V13l9-6 9 6v12z M13 25v-7h6v7" pathLength="1"/></svg>
+        <span id="l-word">Deweloperuch</span>
+      </div>
+      <div id="l-rule"></div>
+      <h2 id="l-line">Sprawdź mieszkanie, <em>zanim podpiszesz umowę</em></h2>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // The mark is drawn like a line on the sheet: frame first, then the house.
+      tl.fromTo("#l-r", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.05);
+      tl.fromTo("#l-h", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.55, ease: "power2.out" }, 0.3);
+      // Wordmark wipes in from the mark; the title rule (thick + thin) draws under it.
+      tl.fromTo("#l-word", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.55, ease: "power3.out" }, 0.45);
+      tl.fromTo("#l-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.7);
+      tl.fromTo("#l-line", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.85);
+      // The next sheet slides over from the right.
+      tl.to("#l-stage", { x: -1150, duration: 0.3, ease: "power3.in" }, 2.2);
+      window.__timelines["logo"] = tl;
+    })();
+  </script>
+</template>

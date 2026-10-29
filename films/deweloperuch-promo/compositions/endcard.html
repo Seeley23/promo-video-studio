@@ -1,0 +1,36 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #e-stage { position: absolute; inset: 0; }
+    #e-lock { position: absolute; left: 0; right: 0; top: 270px; display: flex; justify-content: center; align-items: center; gap: 30px; }
+    #e-mark { width: 120px; height: 120px; overflow: visible; }
+    #e-mark rect, #e-mark path { fill: none; stroke: var(--color-ink); stroke-width: 1.6; }
+    #e-word { font: 400 100px/1 var(--serif); letter-spacing: -2px; }
+    #e-cta-wrap { position: absolute; left: 0; right: 0; top: 520px; text-align: center; }
+    #e-cta { display: inline-flex; padding: 30px 52px; border-radius: 6px; background: var(--color-ink); color: var(--color-ground); font: 650 44px/1 var(--sans); }
+    #e-sub { position: absolute; left: 0; right: 0; top: 680px; text-align: center; font: 400 30px/1.3 var(--sans); color: var(--ink-2); }
+    #e-url { position: absolute; left: 0; right: 0; top: 760px; text-align: center; font: 400 30px/1 var(--mono); color: var(--muted); }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+    <div id="e-stage" class="clip" data-start="0" data-duration="3" data-track-index="0">
+      <div id="e-lock">
+        <svg id="e-mark" viewBox="0 0 32 32"><rect id="e-r" x="1" y="1" width="30" height="30" pathLength="1"/><path id="e-h" d="M7 25V13l9-6 9 6v12z M13 25v-7h6v7" pathLength="1"/></svg>
+        <span id="e-word">Deweloperuch</span>
+      </div>
+      <div id="e-cta-wrap"><span id="e-cta">Zamów raport — 179 zł</span></div>
+      <p id="e-sub">Jedna oferta · bez abonamentu</p>
+      <p id="e-url">deweloperuch.dev</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#e-r", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 0.1);
+      tl.fromTo("#e-h", { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.3);
+      tl.fromTo("#e-word", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power3.out" }, 0.4);
+      tl.fromTo("#e-cta", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.75);
+      tl.fromTo(["#e-sub", "#e-url"], { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.1 }, 0.8);
+      window.__timelines["endcard"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,74 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #k-stage { position: absolute; inset: 0; }
+    #k-sheet {
+      position: absolute; left: 130px; top: 250px; width: 900px; padding: 56px 64px 64px;
+      background: var(--sheet); border-radius: 10px; border-top: 10px solid var(--rule-strong);
+      box-shadow: 0 2px 0 rgba(17,19,17,.08), 0 40px 70px -40px rgba(17,19,17,.55);
+      transform: rotate(-1.2deg);
+    }
+    #k-label { font: italic 300 30px/1 var(--serif); color: var(--muted); margin-bottom: 30px; }
+    #k-title { font: 400 62px/1.1 var(--serif); letter-spacing: -1.5px; color: var(--color-ink); }
+    #k-line { margin-top: 34px; font: 500 34px/1.45 var(--sans); color: var(--ink-2); }
+    #k-meta { margin-top: 26px; font: 400 28px/1.4 var(--mono); color: var(--muted); }
+    .k-mark { position: relative; display: inline-block; }
+    .k-cloud { position: absolute; left: -22px; top: -16px; width: calc(100% + 44px); height: calc(100% + 32px); overflow: visible; }
+    .k-cloud path { stroke-dasharray: 1; stroke-dashoffset: 1; fill-opacity: 0; fill: rgba(168,70,42,.08); stroke: var(--red); stroke-width: 0.8; stroke-linejoin: round; }
+    .k-q { position: absolute; width: 52px; height: 52px; border-radius: 50%; background: var(--sheet); border: 2.5px solid var(--red);
+      font: 700 32px/47px var(--sans); color: var(--red); text-align: center; opacity: 0; }
+    #k-q1 { right: -46px; top: -34px; }
+    #k-q2 { right: -46px; top: -40px; }
+    #k-h1 { position: absolute; left: 1130px; top: 360px; width: 700px; font: 300 108px/1.04 var(--serif); letter-spacing: -3px; color: var(--color-ink); }
+    #k-h1 em { font-style: italic; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+    <div id="k-stage" class="clip" data-start="0" data-duration="3" data-track-index="0">
+      <div id="k-sheet">
+        <p id="k-label">Przykład ogłoszenia</p>
+        <h2 id="k-title"><span class="k-mark" id="k-m1"><svg class="k-cloud" viewBox="0 0 100 40" preserveAspectRatio="none"><path id="k-c1" pathLength="1"/></svg>Słoneczne<span class="k-q" id="k-q1">?</span></span> 3&nbsp;pokoje, 58,5&nbsp;m²</h2>
+        <p id="k-line"><span class="k-mark" id="k-m2"><svg class="k-cloud" viewBox="0 0 100 40" preserveAspectRatio="none"><path id="k-c2" pathLength="1"/></svg>Funkcjonalny układ<span class="k-q" id="k-q2">?</span></span> · salon z aneksem · balkon 5,2&nbsp;m²</p>
+        <p id="k-meta">IV piętro · termin oddania: II kwartał 2027</p>
+      </div>
+      <h1 id="k-h1">Czy naprawdę znasz <em>to mieszkanie?</em></h1>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // Revision cloud from the brand's components/drawing/cloud.ts, on a 100x40 box.
+      function cloudPath(cx, cy, rx, ry, n) {
+        const p = Array.from({ length: n }, (_, i) => {
+          const a = (i / n) * Math.PI * 2 - Math.PI / 2;
+          return [cx + rx * Math.cos(a), cy + ry * Math.sin(a)];
+        });
+        const parts = ["M" + p[0][0].toFixed(2) + " " + p[0][1].toFixed(2)];
+        for (let i = 1; i <= n; i++) {
+          const [px, py] = p[(i - 1) % n], [x, y] = p[i % n];
+          const r = (Math.hypot(x - px, y - py) / 2) * 1.08;
+          parts.push("A" + r.toFixed(2) + " " + r.toFixed(2) + " 0 0 1 " + x.toFixed(2) + " " + y.toFixed(2));
+        }
+        return parts.join(" ") + " Z";
+      }
+      document.getElementById("k-c1").setAttribute("d", cloudPath(50, 20, 47, 17, 14));
+      document.getElementById("k-c2").setAttribute("d", cloudPath(50, 20, 48, 17, 18));
+
+      const tl = gsap.timeline({ paused: true });
+
+      // The question lands first and stays still.
+      tl.fromTo("#k-h1", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, 0.2);
+
+      // Clouds draw around the claims, then the question marks pop (the brand's draw / pop motion).
+      tl.to("#k-c1", { strokeDashoffset: 0, duration: 0.55, ease: "power2.out" }, 0.75);
+      tl.to("#k-c1", { fillOpacity: 1, duration: 0.2, ease: "none" }, 1.25);
+      tl.fromTo("#k-q1", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.6)" }, 1.25);
+      tl.to("#k-c2", { strokeDashoffset: 0, duration: 0.55, ease: "power2.out" }, 1.35);
+      tl.to("#k-c2", { fillOpacity: 1, duration: 0.2, ease: "none" }, 1.85);
+      tl.fromTo("#k-q2", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.6)" }, 1.85);
+
+      // The sheet is pushed aside by the next sheet (page change, transform only).
+      tl.to("#k-sheet", { x: -1150, rotation: -4, duration: 0.3, ease: "power3.in" }, 2.7);
+      tl.to("#k-h1", { opacity: 0, duration: 0.15, ease: "power3.in" }, 2.72);
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,76 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #c-stage { position: absolute; inset: 0; }
+    #c-title { position: absolute; left: 120px; top: 360px; width: 600px; font: 300 86px/1.06 var(--serif); letter-spacing: -2.4px; }
+    #c-title em { font-style: italic; }
+    /* Rebuilt from components/analysis/PriceSection.tsx (PriceScale) + app/globals.css (.scale-*) */
+    #c-sheet { position: absolute; left: 780px; top: 150px; width: 1030px; padding: 46px 60px 54px; background: var(--sheet); border-radius: 18px;
+      box-shadow: 0 1px 2px rgba(17,19,17,.06), 0 0 0 1px rgba(17,19,17,.05); }
+    #c-head { display: flex; align-items: center; gap: 20px; }
+    #c-num { width: 54px; height: 54px; border-radius: 50%; border: 1.6px solid var(--color-ink); display: inline-flex; align-items: center; justify-content: center; font: 500 22px/1 var(--mono); }
+    #c-h { font: 300 48px/1 var(--serif); letter-spacing: -1px; }
+    #c-rule { margin-top: 18px; height: 7px; border-top: 3px solid var(--color-ink); border-bottom: 1px solid var(--color-ink); transform-origin: left center; }
+    #c-src { margin-top: 14px; font: 400 21px/1.3 var(--mono); color: var(--muted); }
+    #c-stmt { margin-top: 34px; font: 400 32px/1.35 var(--sans); }
+    #c-stmt strong { font-weight: 700; }
+    #c-scale { position: relative; margin-top: 40px; padding-top: 92px; }
+    #c-label { position: absolute; top: 0; left: 0; font: 700 18px/1.35 var(--sans); letter-spacing: .1em; text-transform: uppercase; text-align: center; color: var(--offer, #1f3c88); white-space: nowrap; }
+    #c-label strong { display: block; font: 600 30px/1.2 var(--serif); letter-spacing: 0; text-transform: none; }
+    #c-track { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; height: 30px; }
+    .c-zone { background: var(--paper-2); border: 1.5px solid var(--rule-strong); }
+    .c-zone.active { background: var(--marker); border-color: var(--marker-line); }
+    #c-median { position: absolute; top: -10px; bottom: -10px; width: 3px; margin-left: -1.5px; background: var(--color-ink); }
+    #c-pin { position: absolute; left: 0; top: -18px; bottom: -18px; width: 5px; margin-left: -2.5px; background: #1f3c88; }
+    #c-pin::before { content: ""; position: absolute; top: -9px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: #1f3c88; }
+    #c-dim { position: relative; margin: 26px 33.333% 0; height: 2px; background: var(--color-ink); transform-origin: center; }
+    #c-dim::before, #c-dim::after { content: ""; position: absolute; top: -9px; width: 2px; height: 20px; background: var(--color-ink); transform: rotate(45deg); }
+    #c-dim::before { left: 0; } #c-dim::after { right: 0; }
+    #c-dim span { position: absolute; left: 50%; top: 12px; transform: translateX(-50%); white-space: nowrap; font: 400 21px/1 var(--sans); color: var(--ink-2); }
+    #c-ticks { position: relative; height: 34px; margin-top: 30px; font: 500 22px/1 var(--mono); }
+    #c-ticks span { position: absolute; transform: translateX(-50%); }
+    #c-zones { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 18px; font: 400 26px/1 var(--sans); text-align: center; color: var(--muted); }
+    #c-zones .active { color: var(--color-ink); font-weight: 700; }
+    #c-tag { position: absolute; right: 60px; top: 50px; font: italic 300 26px/1 var(--serif); color: var(--muted); }
+  </style>
+  <div id="root" data-composition-id="price" data-width="1920" data-height="1080">
+    <div id="c-stage" class="clip" data-start="0" data-duration="4.5" data-track-index="0">
+      <h2 id="c-title">Cena na tle <em>transakcji z&nbsp;okolicy</em></h2>
+      <div id="c-sheet">
+        <span id="c-tag">Przykład</span>
+        <div id="c-head"><span id="c-num">05</span><h3 id="c-h">Cena na tle transakcji</h3></div>
+        <div id="c-rule"></div>
+        <p id="c-src">źródło: dane demonstracyjne, nie Rejestr Cen Nieruchomości · 24 transakcje</p>
+        <p id="c-stmt">Cena za m² tej oferty: <strong>13 419 zł</strong> — <strong>powyżej rynku</strong>.</p>
+        <div id="c-scale">
+          <span id="c-label">ta oferta<strong>13 419 zł/m²</strong></span>
+          <div id="c-track"><span class="c-zone"></span><span class="c-zone"></span><span class="c-zone" id="c-active"></span>
+            <span id="c-median" style="left:46.7%"></span><span id="c-pin"></span></div>
+          <div id="c-dim"><span>typowy przedział</span></div>
+          <div id="c-ticks"><span style="left:33.333%">11 704 zł</span><span style="left:66.667%">13 113 zł</span></div>
+          <div id="c-zones"><span>poniżej rynku</span><span>typowo</span><span class="active">powyżej rynku</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // Example values: fixtures/rcn/scenario-001 (synthetic, Warszawa Bemowo) vs listing ls-001.
+      // Positions from lib/report.ts priceScale(): median 46.7%, offer 72.8%.
+      const MEDIAN = 46.7, OFFER = 72.8;
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#c-sheet", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);
+      tl.fromTo("#c-title", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.15);
+      tl.fromTo("#c-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.3);
+      tl.fromTo("#c-dim", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.7);
+      tl.set("#c-active", { className: "c-zone" }, 0);
+      // The pin starts at the median and travels to the offer (the site's own continuity move).
+      const W = 910; // track width in px (sheet 1030 minus padding)
+      tl.fromTo("#c-pin", { x: (MEDIAN * W) / 100 }, { x: (OFFER * W) / 100, duration: 0.9, ease: "power3.inOut" }, 1.1);
+      tl.fromTo("#c-label", { x: (MEDIAN * W) / 100, xPercent: -50 }, { x: (OFFER * W) / 100, xPercent: -50, duration: 0.9, ease: "power3.inOut" }, 1.1);
+      tl.set("#c-active", { className: "c-zone active" }, 2.0);
+      tl.to("#c-stage", { x: -1150, duration: 0.3, ease: "power3.in" }, 4.2);
+      window.__timelines["price"] = tl;
+    })();
+  </script>
+</template>

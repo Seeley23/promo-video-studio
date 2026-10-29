@@ -1,0 +1,80 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s-stage { position: absolute; inset: 0; }
+    #s-title { position: absolute; left: 120px; top: 360px; width: 600px; font: 300 86px/1.06 var(--serif); letter-spacing: -2.4px; }
+    #s-title em { font-style: italic; }
+    #s-sub { position: absolute; left: 124px; top: 620px; width: 560px; font: 400 30px/1.4 var(--sans); color: var(--ink-2); }
+    /* Rebuilt from app/analyses/new/page.tsx + components/ui/Stepper.tsx */
+    #s-card { position: absolute; left: 780px; top: 110px; width: 1030px; padding: 46px 56px 52px; background: var(--sheet);
+      border: 1px solid var(--rule); border-radius: 18px; box-shadow: 0 1px 2px rgba(17,19,17,.06), 0 0 0 1px rgba(17,19,17,.05); }
+    #s-steps { display: flex; gap: 30px; margin-bottom: 38px; font: 600 23px/1 var(--sans); color: var(--muted); }
+    .s-step { display: flex; align-items: center; gap: 12px; }
+    .s-dot { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--rule-strong); display: inline-flex; align-items: center; justify-content: center; font: 600 20px/1 var(--sans); color: var(--muted); background: var(--sheet); }
+    .s-step.cur { color: var(--color-ink); } .s-step.cur .s-dot { border-color: var(--color-ink); color: var(--color-ink); }
+    .s-step.done .s-dot { background: var(--folder); border-color: var(--folder); color: var(--on-folder); }
+    #s-h { font: 300 54px/1 var(--serif); letter-spacing: -1px; margin-bottom: 30px; }
+    .s-label { font: 650 26px/1.2 var(--sans); margin-bottom: 12px; }
+    .s-label span { font-weight: 400; color: var(--muted); }
+    #s-text { height: 190px; padding: 18px 22px; border: 1.5px solid var(--rule-strong); border-radius: 12px; background: #fff;
+      font: 400 25px/1.45 var(--sans); color: var(--color-ink); overflow: hidden; }
+    #s-caret { display: inline-block; width: 2px; height: 28px; background: var(--color-ink); vertical-align: -5px; margin-left: 1px; }
+    #s-drop { position: relative; margin-top: 30px; height: 104px; border: 2px dashed var(--rule-strong); border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 14px; font: 650 25px/1 var(--sans); }
+    #s-drop .hint { font-weight: 400; color: var(--muted); }
+    #s-chip { position: absolute; inset: 0; display: flex; align-items: center; gap: 16px; padding: 0 26px; border-radius: 10px; background: var(--paper-2); font: 500 25px/1 var(--sans); }
+    #s-chip .ext { font: 500 20px/1 var(--mono); color: var(--muted); }
+    #s-btn { display: inline-flex; margin-top: 34px; padding: 22px 34px; border-radius: 6px; background: var(--color-ink); color: var(--color-ground); font: 650 27px/1 var(--sans); }
+    #s-tag { position: absolute; right: 56px; bottom: 70px; font: italic 300 26px/1 var(--serif); color: var(--muted); }
+  </style>
+  <div id="root" data-composition-id="steps" data-width="1920" data-height="1080">
+    <div id="s-stage" class="clip" data-start="0" data-duration="4.5" data-track-index="0">
+      <h2 id="s-title">Wklejasz <em>ogłoszenie i&nbsp;rzut</em></h2>
+      <p id="s-sub">Raport zwykle do 3 minut od potwierdzenia wpłaty.</p>
+      <div id="s-card">
+        <span id="s-tag">Przykład</span>
+        <div id="s-steps">
+          <span class="s-step cur" id="s-1"><span class="s-dot">1</span>Ogłoszenie i rzut</span>
+          <span class="s-step" id="s-2"><span class="s-dot">2</span>Płatność</span>
+          <span class="s-step" id="s-3"><span class="s-dot">3</span>Sprawdzenie danych</span>
+          <span class="s-step" id="s-4"><span class="s-dot">4</span>Raport</span>
+        </div>
+        <h3 id="s-h">Nowa analiza</h3>
+        <p class="s-label">Treść ogłoszenia <span>(wymagane)</span></p>
+        <div id="s-text"><span id="s-typed"></span><span id="s-caret"></span></div>
+        <p class="s-label" style="margin-top:30px">Rzut mieszkania w PDF <span>(opcjonalnie, ale warto)</span></p>
+        <div id="s-drop" data-layout-allow-overlap>Wybierz plik PDF <span class="hint">albo przeciągnij go tutaj</span>
+          <div id="s-chip"><span class="ext">PDF</span>rzut-mieszkania.pdf</div>
+        </div>
+        <span id="s-btn">Dalej: płatność</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // Example listing text from fixtures/listings/ls-001 (synthetic), without price and address (brand rule).
+      const TEXT = "Mieszkanie 3-pokojowe, 58,5 m², IV piętro w budynku 7-kondygnacyjnym. Salon z aneksem kuchennym, dwie sypialnie, łazienka, przedpokój. Balkon 5,2 m².";
+      const typed = document.getElementById("s-typed");
+      const st = { n: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#s-card", { x: 1150 }, { x: 0, duration: 0.45, ease: "power3.out" }, 0);
+      tl.fromTo(["#s-title", "#s-sub"], { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.12 }, 0.25);
+      // Pasted text appears in chunks, like a paste rendering line by line.
+      tl.fromTo(st, { n: 0 }, { n: TEXT.length, duration: 1.0, ease: "power1.inOut",
+        onUpdate: () => { typed.textContent = TEXT.slice(0, Math.round(st.n)); } }, 0.5);
+      tl.set("#s-caret", { opacity: 0 }, 1.6);
+      // The PDF lands in the drop zone.
+      tl.fromTo("#s-chip", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.8);
+      // Press, then the stepper walks to the report.
+      tl.to("#s-btn", { scale: 0.97, duration: 0.08, ease: "power1.out" }, 2.45);
+      tl.to("#s-btn", { scale: 1, duration: 0.12, ease: "power1.out" }, 2.53);
+      ["#s-1", "#s-2", "#s-3"].forEach((id, i) => {
+        const t = 2.7 + i * 0.3;
+        tl.set(id, { className: "s-step done" }, t);
+        tl.set(id + " .s-dot", { textContent: "✓" }, t);
+        tl.set("#s-" + (i + 2), { className: "s-step cur" }, t);
+      });
+      tl.to("#s-stage", { x: -1150, duration: 0.3, ease: "power3.in" }, 4.2);
+      window.__timelines["steps"] = tl;
+    })();
+  </script>
+</template>

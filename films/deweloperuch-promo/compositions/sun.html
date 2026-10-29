@@ -1,0 +1,131 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #u-stage { position: absolute; inset: 0; }
+    #u-title { position: absolute; left: 120px; top: 300px; width: 600px; font: 300 86px/1.06 var(--serif); letter-spacing: -2.4px; }
+    #u-title em { font-style: italic; }
+    #u-sheet { position: absolute; left: 760px; top: 70px; width: 1060px; padding: 22px 26px 8px; border-radius: 6px; background-color: var(--sheet);
+      background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 22px 22px;
+      box-shadow: 0 1px 2px rgba(17,19,17,.06), 0 0 0 1px rgba(17,19,17,.05); }
+    #u-read { display: flex; gap: 34px; font: 400 24px/1 var(--mono); color: var(--muted); padding: 0 8px 10px; border-bottom: 1px solid var(--rule); }
+    #u-read b { font-weight: 500; color: var(--color-ink); }
+    #u-svg { display: block; width: 1008px; height: 714px; }
+.plan .wall { fill: none; stroke: var(--color-ink); stroke-width: 5; }
+    .plan .wall-inner { fill: none; stroke: var(--color-ink); stroke-width: 2.4; }
+    .plan .window { fill: none; stroke: var(--color-ink); stroke-width: 1; }
+    .plan .leaf { fill: none; stroke: var(--color-ink); stroke-width: 1.6; }
+    .plan .swing { fill: none; stroke: var(--ink-2); stroke-width: 0.9; stroke-dasharray: 3 3; }
+    .plan .furniture { fill: none; stroke: var(--muted); stroke-width: 0.9; }
+    .plan .rooms text { font: 650 7.5px var(--sans); letter-spacing: .18em; text-anchor: middle; fill: var(--ink-2); }
+    .plan .light { mix-blend-mode: multiply; }
+    .plan .light polygon { fill: var(--warm); }
+    .plan .sun-path { fill: none; stroke: var(--marker-line); stroke-width: 1.2; }
+    .plan .sun { fill: var(--warm); stroke: var(--color-ink); stroke-width: 1; }
+    .plan .clash { fill: rgba(216,131,103,.18); stroke: var(--red); stroke-width: 1.8; stroke-linejoin: round; }
+    .plan .north circle { fill: var(--sheet); stroke: var(--color-ink); stroke-width: 1.2; }
+    .plan .north path { fill: var(--color-ink); }
+    .plan .north text { font: 700 10px var(--sans); text-anchor: middle; fill: var(--color-ink); }
+    .plan .callouts circle { fill: var(--sage); stroke: #111311; stroke-width: 1; }
+    .plan .callouts .c2 circle { fill: var(--alert); }
+    .plan .callouts .c3 circle { fill: var(--warm); }
+    .plan .callouts text { font: 500 11px var(--serif); text-anchor: middle; fill: #111311; }
+    .plan .leader { fill: none; stroke: var(--color-ink); stroke-width: 1; }
+    
+    #u-note { position: absolute; left: 124px; top: 640px; width: 560px; padding: 24px 30px 28px; border-top: 8px solid var(--warm); border-radius: 6px; background: var(--sheet);
+      box-shadow: 0 1px 0 rgba(17,19,17,.08), 0 24px 40px -28px rgba(17,19,17,.55); }
+    #u-note .ref { font: 400 22px/1 var(--sans); color: var(--muted); }
+    #u-note .head { margin-top: 12px; font: 400 38px/1.15 var(--serif); letter-spacing: -0.6px; }
+  </style>
+  <div id="root" data-composition-id="sun" data-width="1920" data-height="1080">
+    <div id="u-stage" class="clip" data-start="0" data-duration="4" data-track-index="0">
+      <h2 id="u-title">Godziny słońca <em>w&nbsp;każdym pokoju</em></h2>
+      <div id="u-note"><p class="ref">ze słońca · lato</p><p class="head">Salon: wysokie ryzyko przegrzewania latem</p></div>
+      <div id="u-sheet">
+        <div id="u-read"><span>Pora dnia <b id="u-clock">07:00</b></span><span>Sezon <b>lato</b></span><span>Szerokość <b>52°N</b></span><span>Przykład</span></div>
+        <svg id="u-svg" class="plan" viewBox="0 0 480 340">
+              <defs>
+                <clipPath id="u-clip-salon"><rect x="34" y="64" width="234" height="134"/></clipPath>
+                <clipPath id="u-clip-bedSouth"><rect x="272" y="64" width="174" height="134"/></clipPath>
+                <clipPath id="u-clip-bedWest"><rect x="302" y="202" width="144" height="114"/></clipPath>
+              </defs>
+              <g class="light" id="u-light"></g>
+              <path class="sun-path" pathLength="1" d="M60 54 Q240 -8 420 54"/>
+              <circle class="sun" id="u-sun" r="7"/>
+              <g class="furniture" id="u-furn">
+                <rect x="50" y="150" width="118" height="36" rx="3"/><path d="M50 177 H168"/>
+                <rect x="84" y="104" width="54" height="30" rx="2"/><rect x="360" y="80" width="80" height="92" rx="3"/>
+                <rect x="368" y="87" width="30" height="14" rx="2"/><rect x="402" y="87" width="30" height="14" rx="2"/>
+                <rect x="38" y="210" width="42" height="100" rx="8"/><rect x="118" y="208" width="40" height="22" rx="3"/>
+                <rect x="352" y="224" width="80" height="80" rx="3"/>
+              </g>
+              <path class="wall" pathLength="1" d="M70 60 H30 V100 M30 180 V320 H450 V290 M450 240 V60 H410 M320 60 H200"/>
+              <path class="wall-inner" pathLength="1" d="M30 200 H195 M265 200 H450 M170 200 V220 M170 300 V320 M300 200 V220 M300 300 V320 M270 60 V120 M270 180 V200"/>
+              <path class="window" id="u-win" d="M70 57 H200 M70 63 H200 M320 57 H410 M320 63 H410 M27 100 V180 M33 100 V180 M447 240 V290 M453 240 V290"/>
+              <g id="u-doors">
+                <path class="leaf" d="M170 300 H250 M300 300 H220 M265 200 V130 M270 120 H330"/>
+                <path class="swing" d="M170 220 A80 80 0 0 1 250 300 M300 220 A80 80 0 0 0 220 300 M195 200 A70 70 0 0 1 265 130 M270 180 A60 60 0 0 0 330 120"/>
+              </g>
+              <g class="rooms" id="u-rooms">
+                <text x="150" y="92">SALON</text><text x="400" y="190">SYPIALNIA</text><text x="124" y="262">ŁAZIENKA</text>
+                <text x="236" y="222">PRZEDPOKÓJ</text><text x="392" y="216">SYPIALNIA</text>
+              </g>
+              <path class="clash" id="u-clash" pathLength="1"/>
+              <g class="north" id="u-north" transform="translate(452 28)"><circle r="13"/><path d="M0 9 L5 -6 L0 -2 L-5 -6 Z"/><text x="-22" y="4">N</text></g>
+              <g class="callouts" style="display:none">
+                <g class="c1" id="u-c1"><path class="leader" d="M180 160 L168 168"/><circle cx="190" cy="152" r="11"/><text x="190" y="156">1</text></g>
+                <g class="c2" id="u-c2"><circle cx="282" cy="236" r="11"/><text x="282" y="240">2</text></g>
+                <g class="c3" id="u-c3"><path class="leader" d="M48 42 L58 52"/><circle cx="40" cy="34" r="11"/><text x="40" y="38">3</text></g>
+              </g>
+            </svg>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // Sun model from lib/sun.ts and PlanSheet.tsx; the time of day is driven by the timeline.
+      const rad = (d) => (d * Math.PI) / 180, deg = (r) => (r * 180) / Math.PI;
+      function solar(min) {
+        const lat = rad(52), dec = rad(23.44), h = rad(min / 4 - 180);
+        const sa = Math.max(-1, Math.min(1, Math.sin(lat) * Math.sin(dec) + Math.cos(lat) * Math.cos(dec) * Math.cos(h)));
+        const az = Math.atan2(Math.sin(h), Math.cos(h) * Math.sin(lat) - Math.tan(dec) * Math.cos(lat));
+        return { altitude: deg(Math.asin(sa)), azimuth: (((deg(az) + 180) % 360) + 360) % 360 };
+      }
+      const ang = (a, b) => Math.abs(((((a - b + 180) % 360) + 360) % 360) - 180);
+      const WINDOWS = [
+        { room: "salon", wall: 90, a: [30, 100], b: [30, 180] }, { room: "salon", wall: 180, a: [70, 60], b: [200, 60] },
+        { room: "bedSouth", wall: 180, a: [320, 60], b: [410, 60] }, { room: "bedWest", wall: 270, a: [450, 240], b: [450, 290] },
+      ];
+      const NS = "http://www.w3.org/2000/svg", light = document.getElementById("u-light");
+      const polys = WINDOWS.map((w) => { const el = document.createElementNS(NS, "polygon"); el.setAttribute("clip-path", "url(#u-clip-" + w.room + ")"); light.appendChild(el); return el; });
+      const sunEl = document.getElementById("u-sun"), clock = document.getElementById("u-clock");
+      function render(min) {
+        const sun = solar(min);
+        const t = Math.min(1, Math.max(0, (sun.azimuth - 50) / 260)), u = 1 - t;
+        sunEl.setAttribute("cx", (u * u * 60 + 2 * u * t * 240 + t * t * 420).toFixed(1));
+        sunEl.setAttribute("cy", (u * u * 54 + 2 * u * t * -8 + t * t * 54).toFixed(1));
+        WINDOWS.forEach((w, i) => {
+          const on = sun.altitude > 0 && ang(sun.azimuth, w.wall) < 89;
+          if (!on) { polys[i].setAttribute("points", ""); return; }
+          const az = rad(sun.azimuth), dx = Math.sin(az), dy = -Math.cos(az), cot = 1 / Math.tan(rad(Math.max(sun.altitude, 2)));
+          const near = Math.min(0.9 * cot * 36, 600), far = Math.min(2.2 * cot * 36, 600);
+          const pt = ([x, y], s) => (x + dx * s).toFixed(1) + "," + (y + dy * s).toFixed(1);
+          polys[i].setAttribute("points", [pt(w.a, near), pt(w.b, near), pt(w.b, far), pt(w.a, far)].join(" "));
+          polys[i].style.fillOpacity = 0.16 + 0.42 * Math.max(Math.cos(rad(ang(sun.azimuth, w.wall))), 0);
+        });
+        const m = Math.round(min / 30) * 30;
+        clock.textContent = String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0");
+      }
+      document.getElementById("u-clash").setAttribute("d", "");
+      const time = { m: 420 };
+      render(time.m);
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#u-sheet", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);
+      tl.fromTo("#u-title", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.15);
+      // The sun crosses the arc from 07:00 to 19:00; the patches follow on the floor.
+      tl.fromTo(time, { m: 420 }, { m: 1140, duration: 3.0, ease: "power1.inOut", onUpdate: () => render(time.m) }, 0.4);
+      tl.fromTo("#u-note", { y: 60, opacity: 0, rotation: 0 }, { y: 0, opacity: 1, rotation: -1.2, duration: 0.45, ease: "power3.out" }, 1.6);
+      tl.to("#u-stage", { opacity: 0, duration: 0.2, ease: "power2.in" }, 3.8);
+      window.__timelines["sun"] = tl;
+    })();
+  </script>
+</template>
