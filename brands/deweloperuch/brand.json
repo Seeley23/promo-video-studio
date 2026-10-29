@@ -1,0 +1,50 @@
+{
+  "name": "Deweloperuch",
+  "url": "deweloperuch.dev",
+  "language": "pl",
+  "look": "Dokumentacja budowlana: papier, tabliczka rysunkowa, tytuł rysunku z numerem w kółku, chmurka rewizji (cynober) na problemach, linia wymiarowa, jeden żółty zakreślacz tylko dla pozycji ceny.",
+  "colors": {
+    "ground": "#F2F0EA",
+    "sheet": "#FBF9F4",
+    "ink": "#111311",
+    "ink2": "#3D3A32",
+    "muted": "#625E53",
+    "rule": "rgba(26,25,21,0.14)",
+    "accent": "#14201A",
+    "accentInk": "#FBF9F4",
+    "problem": "#A8462A",
+    "marker": "#E5C39A",
+    "offer": "#1F3C88",
+    "stage": "#111311",
+    "onStage": "#F4F1E9",
+    "stageAccent": "#B5D2BD",
+    "warm": "#D7A56B"
+  },
+  "fonts": {
+    "display": { "family": "Spectral", "weight": 400, "files": "fonts/spectral-*.woff2" },
+    "body": { "family": "Libre Franklin", "weight": 400, "files": "fonts/libre-franklin-*.woff2" },
+    "mono": { "family": "IBM Plex Mono", "weight": 400, "files": "fonts/ibm-plex-mono-*.woff2", "rule": "tylko odczyty: numery arkuszy, źródła, metryka; nigdy zdania" }
+  },
+  "logo": {
+    "file": "logo-mark.svg",
+    "wordmark": "Deweloperuch",
+    "wordmarkFont": "Spectral",
+    "onDark": false,
+    "note": "Znak: dom w kwadracie, kontur 1.6 w kolorze ink. Napis obok w Spectral."
+  },
+  "cta": {
+    "label": "Zamów raport — 179 zł",
+    "url": "deweloperuch.dev",
+    "sub": "Jedna oferta · bez abonamentu · płacisz dopiero po wklejeniu ogłoszenia"
+  },
+  "voice": { "provider": "heygen", "voiceId": "", "language": "pl" },
+  "banned": [
+    "szkło i rozmycia", "gradientowe plamy", "kafelki bento z ikonami", "emoji", "zdjęcia stockowe",
+    "liczniki rosnących liczb", "karuzele", "kursor-gadżety", "mono-etykiety nad każdą sekcją",
+    "ceny i adresy w dekoracji (przykład zawsze podpisany jako przykład)"
+  ],
+  "source": {
+    "repo": "Seeley23/deweloperuch",
+    "notes": "Kolory: apps/web/app/globals.css :root. Fonty: apps/web/app/fonts.ts (SIL OFL, pliki licencji w fonts/). Znak: components/ui/SiteHeader.tsx. Język wizualny: docs/design-language.md. CTA i cena: app/page.tsx, lib/report.ts (ANALYSIS_PRICE_PLN = 179)."
+  }
+}
