@@ -1,0 +1,24 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #q-stage { position: absolute; inset: 0; background: #fff; }
+    #q-label { position: absolute; left: 0; right: 0; top: 130px; text-align: center; font: 500 40px/1 "Roboto"; color: var(--muted); }
+    #q-shot { position: absolute; left: 480px; top: 260px; width: 958px; height: 568px; }
+    #q-shot img { width: 958px; height: 568px; display: block; }
+  </style>
+  <div id="root" data-composition-id="quote" data-width="1920" data-height="1080">
+    <div id="q-stage" class="clip" data-start="0" data-duration="3" data-track-index="0">
+      <p id="q-label">Opinie klientów</p>
+      <div id="q-shot"><img src="assets/shots/testimonial.png" alt="Opinia: dr Marcin Stupak" /></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#q-label", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.1);
+      tl.fromTo("#q-shot", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 0.15);
+      tl.to("#q-stage", { opacity: 0, duration: 0.2, ease: "power2.in" }, 2.8);
+      window.__timelines["quote"] = tl;
+    })();
+  </script>
+</template>

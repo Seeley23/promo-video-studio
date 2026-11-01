@@ -1,0 +1,322 @@
+[a] Biuro rachunkowe
+[a] Dlaczego my?
+[a] Zespół
+[a] Oferta
+[a] Założenie Działalności
+[a] Rejestracja Spółki
+[a] Usługi Kadrowe
+[a] Usługi Księgowe
+[a] Wirtualne Biuro
+[a] Ulga IP Box
+[a] Dla kogo
+[a] Księgowość dla IT
+[a] Księgowość dla Ecommerce
+[a] Księgowość dla Gastronomii
+[a] Księgowość dla Lekarzy
+[a] Księgowość dla Firm Transportowych
+[a] Księgowość dla Firmy Budowlanej
+[a] Księgowość dla Rolnika
+[a] Księgowość dla Fundacji
+[a] Cennik
+[a] Oddziały
+[a] Biuro rachunkowe Kraków
+[a] Biuro Rachunkowe Kraków Bieńczyce
+[a] Biuro Rachunkowe Kraków Czyżyny
+[a] Biuro Rachunkowe Kraków Grzegórzki
+[a] Biuro Rachunkowe Kraków Krowodrza
+[a] Biuro rachunkowe Nowa Huta
+[a] Biuro Rachunkowe Kraków Podgórze
+[a] Biuro Rachunkowe Kraków Prądnik
+[a] Biuro Rachunkowe Kraków Stare Miasto
+[a] Biuro Rachunkowe Kraków Zwierzyniec
+[a] Biuro rachunkowe Gdańsk
+[a] Biuro Rachunkowe Gdańsk Aniołki
+[a] Biuro Rachunkowe Gdańsk Letnica
+[a] Biuro Rachunkowe Gdańsk Orunia
+[a] Biuro Rachunkowe Gdańsk Rudniki
+[a] Biuro Rachunkowe Gdańsk Siedlce
+[a] Biuro Rachunkowe Gdańsk Śródmieście
+[a] Biuro Rachunkowe Gdańsk Wrzeszcz
+[a] Biuro rachunkowe Łódź
+[a] Biuro Rachunkowe Łódź Bałuty
+[a] Biuro Rachunkowe Łódź Centrum
+[a] Biuro Rachunkowe Łódź Górniak
+[a] Biuro Rachunkowe Łódź Koziny
+[a] Biuro Rachunkowe Łódź Śródmieście
+[a] Biuro Rachunkowe Łódź Stare Polesie
+[a] Biuro Rachunkowe Łódź Widzew
+[a] Biuro Rachunkowe Łódź Zarzew
+[a] Biuro rachunkowe Poznań
+[a] Biuro Rachunkowe Poznań Grunwald
+[a] Biuro Rachunkowe Poznań Jeżyce
+[a] Biuro Rachunkowe Poznań Łazarz
+[a] Biuro Rachunkowe Poznań Rataje
+[a] Biuro Rachunkowe Poznań Stare Miasto
+[a] Biuro Rachunkowe Poznań Wilda
+[a] Biuro Rachunkowe Poznań Winiary
+[a] Biuro Rachunkowe Poznań Winogrady
+[a] Biuro rachunkowe Warszawa
+[a] Biuro Rachunkowe Warszawa Mokotów
+[a] Biuro Rachunkowe Warszawa Ochota
+[a] Biuro Rachunkowe Warszawa Praga Północ
+[a] Biuro Rachunkowe Warszawa Praga Południe
+[a] Biuro Rachunkowe Warszawa Śródmieście
+[a] Biuro Rachunkowe Warszawa Wola
+[a] Biuro Rachunkowe Warszawa Żoliborz
+[a] Biuro rachunkowe Wrocław
+[a] Biuro Rachunkowe Wrocław Huby
+[a] Biuro Rachunkowe Wrocław Nadodrze
+[a] Biuro Rachunkowe Wrocław Ołbin
+[a] Biuro Rachunkowe Wrocław Przedmieście Oławskie
+[a] Biuro Rachunkowe Wrocław Stare Miasto
+[a] Biuro Rachunkowe Wrocław Szczepin
+[a] Blog
+[a] Kontakt
+[span] +48 22 38 25 800
+[span] biuro@taxeo.pl
+[h1] Księgowość bez stresu
+[p] Najlepsi księgowi w Polsce, z którymi będziesz chciał współpracować. Doradcy z naszego biura rachunkowego są do Twoich usług.
+[a] Załóż firmę
+[a] Zleć księgowość
+[div] Zaufali nam
+[h2] Dlaczego nasze biuro rachunkowe?
+[h3] STAŁY KONTAKT
+[p] Twoimi sprawami zajmie się przydzielona księgowa i kadrowa, które zawsze będą do Twojej dyspozycji.
+[h3] WYGODA
+[p] Wystarczy nam kontakt telefoniczny i online, by załatwić wszystkie Twoje sprawy.
+[h3] BEZPIECZEŃSTWO
+[p] Dysponujemy wysokim ubezpieczeniem OC oraz ścisłymi procedurami ochrony prywatności naszych klientów.
+[h3] SZKOLENIA
+[p] Jesteśmy zawsze na bieżąco z wszelkimi zmianami księgowo-podatkowymi, tak abyś mógł na nich skorzystać.
+[h2] Księgowość z Taxeo
+[h3] APLIKACJA
+[li] Wystawiasz faktury w intuicyjnej aplikacji
+[li] Przesyłasz faktury kosztowe do księgowego
+[li] Masz stały podgląd wysokości podatków oraz ZUS
+[li] Zadajesz pytania księgowemu
+[li] Sprawy firmowe załatwiasz przez aplikację
+[h3] KSIĘGOWY
+[li] Weryfikuje poprawność faktur, które wystawiasz
+[li] Księguje faktury kosztowe, które przesyłasz
+[li] Wysyła deklaracje podatkowe do urzędów
+[li] Odpowiada na Twoje pytania (telefon, e-mail)
+[li] Reprezentuje Cię przed urzędami
+[a] Zamów kontakt
+[h2] Wybierz rozwiązanie dla Twojej firmy:
+[h3] Taxeo Jednoosobowe Działalności
+[div] 169 zł
+[div] 20%
+[div] Zniżki przez pierwsze trzy miesiące współpracy!
+[strong] Zyskaj
+[li] Dedykowaną księgową i kadrową
+[li] Obsługę w języku polskim, angielskim, hiszpańskim, rosyjskim
+[li] Pomoc w formalnościach związanych z przejściem z innego biura
+[li] Program do fakturowania online
+[li] Usługi doradcy podatkowego na życzenie
+[li] Reprezentację przed urzędami
+[li] Wysokie ubezpieczenie OC
+[li] Gwarancję bezpieczeństwa Twoich danych
+[li] Obsługę stacjonarną i zdalną
+[li] Konsultacje bez limitów
+[strong] Księgowość dla działalności gospodarczej
+[li] Sporządzanie JPK
+[li] Obsługa ZUS
+[li] Dostęp do dokumentów i wyników online 24/7
+[li] Bieżące wsparcie związane z prowadzoną działalnością
+[li] Obsługa VAT, VAT-UE
+[li] Ewidencja środków trwałych
+[li] Wyliczanie podatku dochodowego PIT
+[a] Kontakt
+[h3] Taxeo Spółki
+[div] 522 zł
+[div] 20%
+[div] Zniżki przez pierwsze trzy miesiące współpracy!
+[strong] Zyskaj
+[li] Dedykowaną księgową i kadrową
+[li] Obsługę w języku polskim, angielskim, hiszpańskim i rosyjskim
+[li] Program do fakturowania online
+[li] Usługi doradcy podatkowego na życzenie
+[li] Reprezentację przed urzędami
+[li] Wysokie ubezpieczenie OC
+[li] Gwarancję bezpieczeństwa Twoich danych
+[li] Obsługę stacjonarną i zdalną
+[li] Konsultacje bez limitów
+[strong] Pełna księgowość dla spółki
+[li] Sporządzanie JPK
+[li] Obsługa ZUS
+[li] Dostęp do dokumentów i wyników online 24/7
+[li] Bieżące wsparcie związane z prowadzoną działalnością
+[li] Obsługa VAT, VAT-UE
+[li] Ewidencja środków trwałych
+[li] Wyliczanie podatku dochodowego CIT
+[li] Sporządzanie sprawozdań finansowych
+[a] Kontakt
+[h2] Opinie klientów
+[p] “Doradcy w Taxeo podeszli do mojej sytuacji indywidualnie, co bardzo mi pomogło.”
+[div] dr Marcin Stupak
+[div] adwokat | twórca platformy edukacyjnej Adwokat Uczy
+[p] „Polecam przejście do Taxeo firmom które były w podobnej sytuacji jak my…”
+[div] Grzegorz Papaj
+[div] Współzałożyciel firmy ImpiCode
+[p] „W Taxeo wyznaczamy standardy pracy z AI w branży księgowej…”
+[div] Paweł Kijko
+[div] Online Marketing Expert w Taxeo
+[p] „Możemy liczyć na ich pomoc nawet w niestandardowych i szczególnie skomplikowanych przypadkach. Wszystkie procesy przebiegają sprawnie i terminowo.”
+[div] Elena Zayika
+[div] Dyrektor Zarządzający w Softengi Sp. z o. o.
+[h2] Biuro rachunkowe – opinie
+[h3] Współpraca
+[h3] Nasze artykuły znajdziesz na:
+[h2] Zgłoś się do nas i sprawdź, jak możemy Ci pomóc!
+[p] Zostaw swoje dane kontaktowe – oddzwonimy do Ciebie.
+[label] Imię
+[label] Adres e-mail
+[label] Telefon
+[label] Miasto
+[span] Zapoznałem/am się z
+[a] regulaminem
+[span] i akceptuję go.
+[span] Wyrażam zgodę na otrzymywanie od Taxeo informacji o ofercie spółki oraz wiadomości dotyczących prowadzenia działalności gospodarczej
+[a] Więcej
+[p] Administratorem danych osobowych jest Taxeo Sp. z o. o.. Dane osobowe przetwarzane będą wyłącznie w celu obsługi przesłanego zapytania.
+[button] Zamów rozmowę
+[h2] (FAQ) Najczęściej zadawane pytania
+[div] Kiedy otrzymam informację o składkach i podatku?
+[p] Informacja o wysokości podatku dochodowego oraz VAT do zapłaty wysyłana jest po rozliczeniu miesiąca. Informacja o składkach ZUS jest uzależniona od formy opodatkowania, w przypadku zasad ogólnych i podatku liniowego informacja o składce wysyłana jest do 20-go dnia miesiąca, natomiast w przypadku ryczałtu po rozliczeniu miesiąca.
+[div] Dokumenty za cały miesiąc oznaczają wszystkie faktury z miesiąca kalendarzowego tj. od pierwszego do ostatniego dnia miesiąca?
+[p] Tak, szczególne znaczenie ma to w przypadku faktur za zakup towaru oraz od zagranicznych kontrahentów. Faktury te należy wykazać w miesiącu, którego dotyczą, nie można ich wykazać w miesiącach kolejnych.
+[div] Czy Taxeo wypełnia za mnie roczne zestawienie podatkowe?
+[p] Tak. Nasze działania obejmują generalne zamknięcie roku podatkowego, przygotowanie do złożenia PIT i weryfikację czy wszystkie dane są poprawne.
+[div] Gdzie mogę sprawdzić wybraną przez siebie formę opodatkowania?
+[p] Formę opodatkowania można zweryfikować na koncie przedsiębiorcy w CEIDG, będzie ona widoczna na złożonym wniosku dotyczącym założenia działalności.
+[div] Czy po dodaniu faktur do waszego systemu SaldeoSmart muszę jeszcze wysyłać wam maila?
+[p] Po dodaniu wszystkich dokumentów za dany miesiąc w SaldeoSmart jest możliwość zaznaczenia, że to komplet dokumentów. Po zaznaczeniu tej opcji otrzymamy powiadomienie i przystąpimy do rozliczenia.
+[div] Czy mam dodać Państwa firmę bądź Panią/Pana jako pełnomocnika w ZUS?
+[p] Nie ma takiej konieczności. Bez złożonego pełnomocnictwa w dalszym ciągu będziemy mogli wysyłać deklaracje DRA w imieniu podatnika do ZUS. Pełnomocnictwo upoważnia nas do wglądu na profil przedsiębiorcy w PUE ZUS. Decydując się na złożeniu ZUS PEL naliczana jest opłata w wysokości 99,00 zł/netto miesięcznie w czasie obowiązywania pełnomocnictwa.
+[span] TAXEO SPÓŁKA Z OGRANICZONĄ
+[span] ODPOWIEDZIALNOŚCIĄ
+[p] NIP: 7011088025
+[p] Marszałkowska 56/14,
+[span] 00-545 Warszawa
+[span] Godziny otwarcia:
+[span] Dni robocze : 08:00 – 16:00
+[span] +48 22 38 25 800
+[span] biuro@taxeo.pl
+[span] Linkedin
+[span] Facebook
+[span] Pinterest
+[a] Biuro rachunkowe
+[a] Dlaczego my?
+[a] Usługi kadrowe
+[a] Usługi księgowe
+[a] Założenie Firmy
+[a] Rejestracja Spółki
+[a] Ulga IP Box
+[a] Wirtualne Biuro
+[a] Regulamin
+[a] Polityka prywatności
+[p] Zapisz się do naszego newslettera.
+[label] Twój adres e-mail
+[p] Oddziały
+[a] Nowa Huta
+[a] Warszawa
+[p] Kalkulatory
+[a] Kalkulator UoP vs B2B
+[a] Kalkulator podatkowy 2026
+[a] Koszty spółki – kalkulator opłacalności JDG vs spółka z o.o.
+[a] Programy Księgowe 2025
+[a] Programy OCR 2025
+[a] Czym jest Ulga IP Box?
+[a] VAT marża w turystyce
+[a] VAT OSS i IOSS
+[p] Dzielnice
+[a] Wrocław Stare Miasto
+[a] Kraków Stare Miasto
+[a] Poznań Stare Miasto
+[a] Warszawa Śródmieście
+[a] Gdańsk Śródmieście
+[a] Łódź Centrum
+[p] Ważne linki
+[a] Księgowość dla Lekarzy
+[a] Księgowość dla Logistyki
+[a] Księgowość dla Fundacji
+[a] Księgowość dla Rolnika
+[a] Księgowość dla Gastro
+[a] Księgowość Freelancerów
+[a] Księgowość Ecommerce
+[a] Biuro rachunkowe
+[a] Dlaczego my?
+[a] Zespół
+[a] Oferta
+[a] Założenie Działalności
+[a] Rejestracja Spółki
+[a] Usługi Kadrowe
+[a] Usługi Księgowe
+[a] Wirtualne Biuro
+[a] Ulga IP Box
+[a] Dla kogo
+[a] Księgowość dla IT
+[a] Księgowość dla Ecommerce
+[a] Księgowość dla Gastronomii
+[a] Księgowość dla Lekarzy
+[a] Księgowość dla Firm Transportowych
+[a] Księgowość dla Firmy Budowlanej
+[a] Księgowość dla Rolnika
+[a] Księgowość dla Fundacji
+[a] Cennik
+[a] Oddziały
+[a] Biuro rachunkowe Kraków
+[a] Biuro Rachunkowe Kraków Bieńczyce
+[a] Biuro Rachunkowe Kraków Czyżyny
+[a] Biuro Rachunkowe Kraków Grzegórzki
+[a] Biuro Rachunkowe Kraków Krowodrza
+[a] Biuro rachunkowe Nowa Huta
+[a] Biuro Rachunkowe Kraków Podgórze
+[a] Biuro Rachunkowe Kraków Prądnik
+[a] Biuro Rachunkowe Kraków Stare Miasto
+[a] Biuro Rachunkowe Kraków Zwierzyniec
+[a] Biuro rachunkowe Gdańsk
+[a] Biuro Rachunkowe Gdańsk Aniołki
+[a] Biuro Rachunkowe Gdańsk Letnica
+[a] Biuro Rachunkowe Gdańsk Orunia
+[a] Biuro Rachunkowe Gdańsk Rudniki
+[a] Biuro Rachunkowe Gdańsk Siedlce
+[a] Biuro Rachunkowe Gdańsk Śródmieście
+[a] Biuro Rachunkowe Gdańsk Wrzeszcz
+[a] Biuro rachunkowe Łódź
+[a] Biuro Rachunkowe Łódź Bałuty
+[a] Biuro Rachunkowe Łódź Centrum
+[a] Biuro Rachunkowe Łódź Górniak
+[a] Biuro Rachunkowe Łódź Koziny
+[a] Biuro Rachunkowe Łódź Śródmieście
+[a] Biuro Rachunkowe Łódź Stare Polesie
+[a] Biuro Rachunkowe Łódź Widzew
+[a] Biuro Rachunkowe Łódź Zarzew
+[a] Biuro rachunkowe Poznań
+[a] Biuro Rachunkowe Poznań Grunwald
+[a] Biuro Rachunkowe Poznań Jeżyce
+[a] Biuro Rachunkowe Poznań Łazarz
+[a] Biuro Rachunkowe Poznań Rataje
+[a] Biuro Rachunkowe Poznań Stare Miasto
+[a] Biuro Rachunkowe Poznań Wilda
+[a] Biuro Rachunkowe Poznań Winiary
+[a] Biuro Rachunkowe Poznań Winogrady
+[a] Biuro rachunkowe Warszawa
+[a] Biuro Rachunkowe Warszawa Mokotów
+[a] Biuro Rachunkowe Warszawa Ochota
+[a] Biuro Rachunkowe Warszawa Praga Północ
+[a] Biuro Rachunkowe Warszawa Praga Południe
+[a] Biuro Rachunkowe Warszawa Śródmieście
+[a] Biuro Rachunkowe Warszawa Wola
+[a] Biuro Rachunkowe Warszawa Żoliborz
+[a] Biuro rachunkowe Wrocław
+[a] Biuro Rachunkowe Wrocław Huby
+[a] Biuro Rachunkowe Wrocław Nadodrze
+[a] Biuro Rachunkowe Wrocław Ołbin
+[a] Biuro Rachunkowe Wrocław Przedmieście Oławskie
+[a] Biuro Rachunkowe Wrocław Stare Miasto
+[a] Biuro Rachunkowe Wrocław Szczepin
+[a] Blog
+[a] Kontakt
+[span] +48 22 38 25 800
+[span] biuro@taxeo.pl

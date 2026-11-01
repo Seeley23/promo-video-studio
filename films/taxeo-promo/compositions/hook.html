@@ -1,0 +1,46 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #k-stage { position: absolute; inset: 0; background: radial-gradient(120% 90% at 70% 110%, #d7ebff 0%, #ffffff 60%); }
+    #k-words { position: absolute; left: 130px; top: 250px; font: 700 140px/1.02 "Roboto"; letter-spacing: -4px; color: var(--color-ink); }
+    #k-words span { display: block; }
+    #k-words .acc { color: var(--color-accent); }
+    #k-pile { position: absolute; left: 1060px; top: 250px; width: 720px; height: 600px; }
+    /* Checklist rows in the site's own style (white card, blue tick box) – copy verbatim from the plans section. */
+    .k-chip { position: absolute; left: 0; width: 700px; padding: 26px 30px; display: flex; align-items: center; gap: 22px;
+      background: #fff; border-radius: 16px; box-shadow: 0 18px 40px -18px rgba(25,21,20,.35), 0 0 0 1px rgba(25,21,20,.06);
+      font: 500 38px/1.2 "Roboto"; color: var(--color-ink); }
+    .k-box { width: 40px; height: 40px; border-radius: 8px; background: var(--color-accent); flex: none; position: relative; }
+    .k-box::after { content: ""; position: absolute; left: 14px; top: 7px; width: 10px; height: 20px; border: solid #fff; border-width: 0 5px 5px 0; transform: rotate(45deg); }
+    #k-card { position: absolute; left: 476px; top: 118px; width: 968px; height: 844px; border-radius: 36px; background: #fff; box-shadow: 0 30px 80px -30px rgba(25,21,20,.35); opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+    <div id="k-stage" class="clip" data-start="0" data-duration="3.5" data-track-index="0">
+      <div id="k-words"><span id="k-w1">Faktury.</span><span id="k-w2">ZUS.</span><span id="k-w3">VAT.</span><span id="k-w4" class="acc">JPK.</span></div>
+      <div id="k-pile" data-layout-allow-overlap>
+        <div class="k-chip" id="k-c1"><span class="k-box"></span>Obsługa VAT, VAT-UE</div>
+        <div class="k-chip" id="k-c2"><span class="k-box"></span>Obsługa ZUS</div>
+        <div class="k-chip" id="k-c3"><span class="k-box"></span>Sporządzanie JPK</div>
+        <div class="k-chip" id="k-c4"><span class="k-box"></span>Wyliczanie podatku dochodowego PIT</div>
+      </div>
+      <div id="k-card"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const Y = [40, 170, 300, 430], R = [-4, 3, -2.5, 5];
+      // Frame 0 already has the first word and the first chip on screen (thumbnail).
+      [1, 2, 3, 4].forEach((i) => {
+        const t = (i - 1) * 0.55;
+        tl.fromTo("#k-w" + i, { opacity: i === 1 ? 1 : 0, y: i === 1 ? 0 : 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, t);
+        tl.fromTo("#k-c" + i, { y: i === 1 ? Y[0] : -700, rotation: R[i - 1] * 2 }, { y: Y[i - 1], rotation: R[i - 1], duration: 0.45, ease: "back.out(1.3)" }, t);
+      });
+      // The pile gathers into one white card, which grows into the hero card of the site.
+      tl.to(".k-chip", { x: -480, y: 280, rotation: 0, scale: 0.5, opacity: 0, duration: 0.4, ease: "power3.in", stagger: 0.04 }, 2.6);
+      tl.to("#k-words", { x: -300, opacity: 0, duration: 0.35, ease: "power3.in" }, 2.65);
+      tl.fromTo("#k-card", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power3.inOut" }, 2.9);
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>

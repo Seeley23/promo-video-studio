@@ -1,0 +1,183 @@
+{
+  "typography": [
+    {
+      "role": "display",
+      "fontFamily": "Roboto",
+      "fontSize": "48px",
+      "fontWeight": "400",
+      "lineHeight": "62.4px",
+      "letterSpacing": "normal",
+      "color": "#191514",
+      "sampleText": "Księgowość bez stresu"
+    },
+    {
+      "role": "heading",
+      "fontFamily": "Roboto",
+      "fontSize": "36px",
+      "fontWeight": "400",
+      "lineHeight": "46.8px",
+      "letterSpacing": "normal",
+      "color": "#191514",
+      "sampleText": "Dlaczego nasze biuro rachunkowe?"
+    },
+    {
+      "role": "heading-3",
+      "fontFamily": "Roboto",
+      "fontSize": "22px",
+      "fontWeight": "700",
+      "lineHeight": "28.6px",
+      "letterSpacing": "normal",
+      "color": "#191514",
+      "sampleText": "STAŁY KONTAKT"
+    },
+    {
+      "role": "body",
+      "fontFamily": "Roboto",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "21.6px",
+      "letterSpacing": "normal",
+      "color": "#666666",
+      "sampleText": "Najlepsi księgowi w Polsce, z którymi będziesz chciał współp"
+    },
+    {
+      "role": "link",
+      "fontFamily": "Roboto",
+      "fontSize": "16px",
+      "fontWeight": "700",
+      "lineHeight": "21.6px",
+      "letterSpacing": "normal",
+      "color": "#191514",
+      "sampleText": "Biuro rachunkowe"
+    },
+    {
+      "role": "label",
+      "fontFamily": "Roboto",
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "lineHeight": "17.55px",
+      "letterSpacing": "normal",
+      "color": "#666666",
+      "sampleText": "Zapoznałem/am się z regulaminem i akceptuję go."
+    }
+  ],
+  "spacing": {
+    "observed": [
+      5,
+      12,
+      15,
+      20,
+      25,
+      27,
+      50,
+      140
+    ],
+    "baseUnit": 4
+  },
+  "radius": [
+    "30px"
+  ],
+  "shadows": [],
+  "buttons": [
+    {
+      "label": "<img src=\"data:image/png;base64,iVBORw0K",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#191514",
+      "padding": "4px 8px",
+      "borderRadius": "4px",
+      "border": "0px none rgb(25, 21, 20)",
+      "boxShadow": "none",
+      "fontSize": "12px",
+      "fontWeight": "600",
+      "height": "24px"
+    },
+    {
+      "label": "Załóż firmę",
+      "background": "transparent",
+      "backgroundImage": "linear-gradient(rgb(94, 152, 209) 0%, rgb(75, 122, 167) 100%)",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "12px 27px",
+      "borderRadius": "30px",
+      "border": "1px solid rgb(255, 255, 255)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "700",
+      "height": "47.5938px"
+    },
+    {
+      "label": "Zleć księgowość",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#191514",
+      "padding": "12px 27px",
+      "borderRadius": "30px",
+      "border": "1px solid rgb(25, 21, 20)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "47.5938px"
+    },
+    {
+      "label": "button",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#000000",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(0, 0, 0)",
+      "boxShadow": "none",
+      "fontSize": "13.3333px",
+      "fontWeight": "400",
+      "height": "269.328px"
+    }
+  ],
+  "cards": [
+    {
+      "label": "card",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#666666",
+      "padding": "75px 140px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(102, 102, 102)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "902.547px"
+    }
+  ],
+  "nav": {
+    "label": "navigation",
+    "background": "#FFFFFF",
+    "backgroundImage": "",
+    "backdropFilter": "",
+    "color": "#666666",
+    "padding": "0px",
+    "borderRadius": "0px",
+    "border": "0px none rgb(102, 102, 102)",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "height": "80.0938px"
+  },
+  "chips": [],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [
+    {
+      "value": "radial-gradient(50% 50%, rgb(255, 255, 255) 11.54%, rgb(223, 240, 255) 100%)",
+      "area": 5817990
+    },
+    {
+      "value": "linear-gradient(90deg, rgba(240, 243, 245, 0.8) 0%, rgba(240, 243, 245, 0.8) 25%, rgba(230, 236, 240, 0.9) 50%, rgba(240, 243, 245, 0.8) 75%, rgba(240, 243, 245, 0.8) 100%)",
+      "area": 1371410
+    }
+  ],
+  "glass": []
+}

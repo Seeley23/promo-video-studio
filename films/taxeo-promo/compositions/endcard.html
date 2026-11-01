@@ -1,0 +1,30 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #e-stage { position: absolute; inset: 0; background: radial-gradient(100% 80% at 50% 110%, #d7ebff 0%, #ffffff 65%); }
+    #e-logo { position: absolute; left: 744px; top: 250px; width: 432px; height: 148px; }
+    #e-logo img { width: 432px; height: 148px; display: block; }
+    #e-line { position: absolute; left: 0; right: 0; top: 450px; text-align: center; font: 400 56px/1.2 "Roboto"; color: var(--color-ink); }
+    #e-btnw { position: absolute; left: 0; right: 0; top: 570px; text-align: center; }
+    #e-btn { display: inline-block; padding: 30px 64px; border-radius: 999px; background: var(--button); color: #fff; font: 500 46px/1 "Roboto"; }
+    #e-url { position: absolute; left: 0; right: 0; top: 740px; text-align: center; font: 400 38px/1.4 "Roboto"; color: var(--muted); }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+    <div id="e-stage" class="clip" data-start="0" data-duration="3" data-track-index="0">
+      <div id="e-logo"><img src="assets/logo.svg" alt="Taxeo" /></div>
+      <p id="e-line">Księgowość bez stresu</p>
+      <div id="e-btnw"><span id="e-btn">Zleć księgowość</span></div>
+      <p id="e-url">taxeo.pl · +48 22 38 25 800</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#e-logo", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power3.out" }, 0.1);
+      tl.fromTo("#e-line", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.45);
+      tl.fromTo("#e-btn", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.5)" }, 0.65);
+      tl.fromTo("#e-url", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.85);
+      window.__timelines["endcard"] = tl;
+    })();
+  </script>
+</template>

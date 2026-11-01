@@ -1,0 +1,35 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #p-stage { position: absolute; inset: 0; background: radial-gradient(90% 90% at 70% 40%, #d7ebff 0%, #ffffff 70%); }
+    #p-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+    #p-card { position: absolute; left: 1100px; top: 140px; width: 560px; height: 1121px; border-radius: 18px; overflow: hidden; box-shadow: 0 40px 80px -40px rgba(25,21,20,.4); }
+    #p-card img { width: 560px; height: 1121px; display: block; }
+    #p-title { position: absolute; left: 130px; top: 300px; width: 740px; font: 400 56px/1.15 "Roboto"; color: var(--color-ink); }
+    #p-big { display: block; font: 700 160px/1 "Roboto"; letter-spacing: -6px; color: var(--color-accent); margin-top: 6px; }
+    #p-sub { position: absolute; left: 134px; top: 620px; width: 700px; font: 400 40px/1.35 "Roboto"; color: var(--muted); }
+    #p-sub b { color: var(--color-ink); font-weight: 700; }
+  </style>
+  <div id="root" data-composition-id="price" data-width="1920" data-height="1080">
+    <div id="p-stage" class="clip" data-start="0" data-duration="6" data-track-index="0">
+      <div id="p-cam"><div id="p-card"><img src="assets/shots/plan-jdg.png" alt="Cennik – Taxeo Jednoosobowe Działalności" /></div></div>
+      <h2 id="p-title">Jednoosobowa działalność <span id="p-big">od 169 zł</span></h2>
+      <p id="p-sub"><b>20%</b> zniżki przez pierwsze trzy miesiące współpracy</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#p-card", { y: 1100 }, { y: 0, duration: 0.5, ease: "power3.out" }, 0);
+      // Push in on the price pill and the 20% badge (card px 51..330, 115..210 → frame).
+      const s = 1.7;
+      tl.to("#p-cam", { scale: s, x: 908 - s * 1100, y: 300 - s * (140 + 163), duration: 0.9, ease: "power2.inOut" }, 0.8);
+      tl.fromTo("#p-title", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, 1.5);
+      tl.fromTo("#p-sub", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 2.1);
+      // Slow push while the offer holds (keeps the frame alive; the copy stays still).
+      tl.to("#p-card", { scale: 1.06, transformOrigin: "20% 15%", duration: 4.0, ease: "none" }, 1.7);
+      tl.to("#p-stage", { opacity: 0, duration: 0.25, ease: "power2.in" }, 5.75);
+      window.__timelines["price"] = tl;
+    })();
+  </script>
+</template>

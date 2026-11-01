@@ -1,0 +1,54 @@
+{
+  "summary": {
+    "webAnimations": 1,
+    "cssDeclarations": 0,
+    "scrollTargets": 3720,
+    "cdpAnimations": 1,
+    "canvases": 0
+  },
+  "namedAnimations": [],
+  "scrollTriggeredElements": 3720,
+  "representativeAnimations": [
+    {
+      "type": "CSSAnimation",
+      "playState": "running",
+      "animationName": "sd-shimmer",
+      "targetSelector": "div.reviews-slider.sd-slider-pending",
+      "targetRect": {
+        "x": 380,
+        "y": 6130.96875,
+        "width": 1160,
+        "height": 1182.25,
+        "top": 6130.96875,
+        "right": 1540,
+        "bottom": 7313.21875,
+        "left": 380
+      },
+      "keyframes": [
+        {
+          "offset": 0,
+          "easing": "linear",
+          "composite": "auto",
+          "backgroundPositionX": "200%",
+          "backgroundPositionY": "0px",
+          "computedOffset": 0
+        },
+        {
+          "offset": 1,
+          "easing": "linear",
+          "composite": "auto",
+          "backgroundPositionX": "-200%",
+          "backgroundPositionY": "0px",
+          "computedOffset": 1
+        }
+      ],
+      "timing": {
+        "duration": 1200,
+        "delay": 0,
+        "iterations": null,
+        "easing": "linear",
+        "direction": "normal"
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #h-stage { position: absolute; inset: 0; background: #fff; }
+    #h-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+    #h-cam img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+  </style>
+  <div id="root" data-composition-id="hero" data-width="1920" data-height="1080">
+    <div id="h-stage" class="clip" data-start="0" data-duration="4" data-track-index="0">
+      <div id="h-cam"><img id="h-img" src="assets/shots/hero-viewport.png" alt="taxeo.pl – sekcja startowa" /></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // Start framed on the hero card (same size as the card the hook grew), then pull back to the whole page.
+      const cx = 600, cy = 400, s0 = 2.2;
+      tl.fromTo("#h-cam", { scale: s0, x: 960 - s0 * cx, y: 540 - s0 * cy }, { scale: s0, x: 960 - s0 * cx, y: 540 - s0 * cy, duration: 0.9, ease: "none" }, 0);
+      tl.to("#h-cam", { scale: 1, x: 0, y: 0, duration: 1.3, ease: "power2.inOut" }, 0.9);
+      // Exit: slide up like scrolling to the next section.
+      tl.to("#h-cam", { y: -1080, duration: 0.4, ease: "power3.in" }, 3.6);
+      window.__timelines["hero"] = tl;
+    })();
+  </script>
+</template>

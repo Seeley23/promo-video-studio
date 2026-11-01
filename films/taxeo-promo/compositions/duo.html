@@ -1,0 +1,42 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #d-stage { position: absolute; inset: 0; background: linear-gradient(180deg, #eaf4ff 0%, #ffffff 100%); }
+    #d-title { position: absolute; left: 0; right: 0; top: 64px; text-align: center; font: 700 72px/1.1 "Roboto"; letter-spacing: -2px; color: var(--color-ink); }
+    #d-title .acc { color: var(--color-accent); }
+    .d-card { position: absolute; top: 180px; width: 560px; height: 558px; transform-origin: 50% 0; }
+    .d-card img { width: 560px; height: 558px; display: block; }
+    #d-app { left: 270px; } #d-acc { left: 1090px; }
+    .d-mask { position: absolute; left: 30px; width: 500px; height: 36px; background: #fff; transform-origin: 100% 50%; }
+    .d-who { position: absolute; top: 990px; width: 560px; text-align: center; font: 500 34px/1 "Roboto"; color: var(--muted); }
+  </style>
+  <div id="root" data-composition-id="duo" data-width="1920" data-height="1080">
+    <div id="d-stage" class="clip" data-start="0" data-duration="6" data-track-index="0">
+      <h2 id="d-title">Ty wystawiasz faktury. <span class="acc">Resztę robi księgowy.</span></h2>
+      <div class="d-card" id="d-app" data-layout-allow-overlap><img src="assets/shots/app-card.png" alt="Aplikacja" />
+        <div class="d-mask" id="d-a0" style="top:332px"></div><div class="d-mask" id="d-a1" style="top:369px"></div><div class="d-mask" id="d-a2" style="top:405px"></div><div class="d-mask" id="d-a3" style="top:442px"></div><div class="d-mask" id="d-a4" style="top:479px"></div>
+      </div>
+      <div class="d-card" id="d-acc" data-layout-allow-overlap><img src="assets/shots/acc-card.png" alt="Księgowy" />
+        <div class="d-mask" id="d-b0" style="top:332px"></div><div class="d-mask" id="d-b1" style="top:369px"></div><div class="d-mask" id="d-b2" style="top:405px"></div><div class="d-mask" id="d-b3" style="top:442px"></div><div class="d-mask" id="d-b4" style="top:479px"></div>
+      </div>
+      <p class="d-who" style="left:270px" id="d-w1">Ty – w aplikacji</p>
+      <p class="d-who" style="left:1090px" id="d-w2">Twój księgowy</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#d-stage", { x: 1920 }, { x: 0, duration: 0.4, ease: "power3.out" }, 0);
+      tl.fromTo("#d-title", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.35);
+      tl.fromTo(["#d-app", "#d-acc"], { scale: 1.36 }, { scale: 1.42, duration: 5.2, ease: "none" }, 0.4);
+      tl.fromTo(["#d-w1", "#d-w2"], { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.2 }, 0.8);
+      // Real rows uncover one by one, alternating: you do one thing, the accountant does the next.
+      for (let i = 0; i < 5; i++) {
+        tl.to("#d-a" + i, { scaleX: 0, duration: 0.3, ease: "power2.inOut" }, 1.0 + i * 0.8);
+        tl.to("#d-b" + i, { scaleX: 0, duration: 0.3, ease: "power2.inOut" }, 1.4 + i * 0.8);
+      }
+      tl.to("#d-stage", { y: -1080, duration: 0.4, ease: "power3.in" }, 5.6);
+      window.__timelines["duo"] = tl;
+    })();
+  </script>
+</template>
