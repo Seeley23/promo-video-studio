@@ -23,6 +23,14 @@ Szablony są uniwersalne. Marka to wymienny wkład w `brands/<marka>/`. Nigdy ni
 6. **Dźwięk i lektor.** Efekty na widocznych akcjach. Lektor: HeyGen API v3 (`api.heygen.com`, klucz dokleja sieć środowiska jako `X-Api-Key`; saldo portfela API musi być > 0), ElevenLabs (launch-video, `ELEVENLABS_API_KEY`) albo darmowy Kokoro (bez języka polskiego).
 7. **Render** do `films/<marka>-<nazwa>/renders/` i krótka notatka REVIEW.md.
 
+## Film tylko ze strony (bez kodu)
+
+- Domena strony musi być w dozwolonych domenach sieci środowiska (Network access); inaczej proxy zwraca 403.
+- `capture` HyperFrames przechodzi przez proxy środowiska tylko z `HYPERFRAMES_CAPTURE_PROXY="$HTTPS_PROXY"`:
+  `HYPERFRAMES_CAPTURE_PROXY="$HTTPS_PROXY" node <PLUGIN_ROOT>/skills/hyperframes/scripts/plugin-cli.mjs capture <url> -o capture --json`
+- Plik `logo-*.svg` z capture to zgadywanka – sprawdź go; prawdziwe logo weź z nagłówka strony.
+- Ostre ekrany: zrzuty elementów Playwrightem w 2x (`chromium.launch({ proxy: { server: process.env.HTTPS_PROXY } })`, `deviceScaleFactor: 2`). Przykład: `films/taxeo-promo/`.
+
 ## Zasady
 
 - Nie commituj kluczy API ani plików kont usług (np. `*.json` z `private_key`).

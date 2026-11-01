@@ -1,0 +1,33 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #o-stage { position: absolute; inset: 0; background: #0b0b0b; }
+    #o-photo { position: absolute; inset: 0; clip-path: circle(0px at 1340px 540px); }
+    #o-photo img { width: 1920px; height: 1080px; object-fit: cover; display: block; }
+    #o-kicker { position: absolute; left: 140px; top: 360px; font: 600 30px/1 "Mulish"; letter-spacing: .6em; color: #fff; }
+    #o-rule { position: absolute; left: 140px; top: 418px; width: 120px; height: 3px; background: var(--color-accent); transform-origin: left center; }
+    #o-title { position: absolute; left: 136px; top: 460px; width: 760px; font: 200 72px/1.15 "Mulish"; color: #fff; }
+  </style>
+  <div id="root" data-composition-id="offmarket" data-width="1920" data-height="1080">
+    <div id="o-stage" class="clip" data-start="0" data-duration="5" data-track-index="0">
+      <div id="o-photo"><img src="assets/img/apartament-181m-do-wynajecia-srodmiescie-warszawa-3.jpg" alt="Wnętrze apartamentu" /></div>
+      <p id="o-kicker">OFFMARKET</p>
+      <div id="o-rule"></div>
+      <h2 id="o-title">Poznaj sekretne oferty luksusowych nieruchomości</h2>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#o-kicker", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.8, ease: "power3.out" }, 0.1);
+      tl.fromTo("#o-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.5);
+      tl.fromTo("#o-title", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.7);
+      // A keyhole-sized circle opens onto an interior on the right; it widens slowly, never to full frame.
+      tl.fromTo("#o-photo", { clipPath: "circle(0px at 1340px 540px)" }, { clipPath: "circle(60px at 1340px 540px)", duration: 0.5, ease: "power3.out" }, 1.2);
+      tl.to("#o-photo", { clipPath: "circle(430px at 1340px 540px)", duration: 2.4, ease: "power2.inOut" }, 1.8);
+      tl.fromTo("#o-photo img", { scale: 1.15 }, { scale: 1.0, duration: 3.6, ease: "power2.out" }, 1.2);
+      tl.to("#o-stage", { opacity: 0, duration: 0.25, ease: "power2.in" }, 4.75);
+      window.__timelines["offmarket"] = tl;
+    })();
+  </script>
+</template>

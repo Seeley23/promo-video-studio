@@ -1,0 +1,45 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #p-stage { position: absolute; inset: 0; background: #111; }
+    .p-shot { position: absolute; inset: 0; overflow: hidden; }
+    .p-shot img { width: 1920px; height: 1080px; object-fit: cover; display: block; }
+    #p-shade { position: absolute; left: 0; right: 0; bottom: 0; height: 520px; background: linear-gradient(0deg, rgba(10,10,10,.7) 0%, rgba(10,10,10,0) 100%); }
+    #p-title { position: absolute; left: 140px; bottom: 300px; font: 200 96px/1 "Mulish"; color: #fff; }
+    .p-label { position: absolute; left: 144px; bottom: 140px; font: 400 28px/1.4 "Mulish"; letter-spacing: .4em; color: #fff; white-space: nowrap; }
+    #p-s2, #p-s3, #p-s4, #p-l2, #p-l3, #p-l4 { opacity: 0; }
+    .p-label span { display: block; font-size: 22px; color: rgba(255,255,255,.78); letter-spacing: .35em; }
+  </style>
+  <div id="root" data-composition-id="props" data-width="1920" data-height="1080">
+    <div id="p-stage" class="clip" data-start="0" data-duration="6" data-track-index="0">
+      <div class="p-shot" id="p-s1"><img src="assets/img/apartament-181m-do-wynajecia-srodmiescie-warszawa-3.jpg" alt="Apartament do wynajęcia, Warszawa Śródmieście" /></div>
+      <div class="p-shot" id="p-s2"><img src="assets/img/dom-wolnostojacy-na-sprzedaz-dolny-sopot.jpg" alt="Dom na sprzedaż, Sopot Dolny" /></div>
+      <div class="p-shot" id="p-s3"><img src="assets/img/dom-wolnostojacy-na-sprzedaz-piaseczno-zalesie-gorne.jpg" alt="Dom na sprzedaż, Zalesie Górne" /></div>
+      <div class="p-shot" id="p-s4"><img src="assets/img/juratee-6.png" alt="Jurata, Jastarnia" /></div>
+      <div id="p-shade"></div>
+      <h2 id="p-title">Kupno, sprzedaż i wynajem</h2>
+      <p class="p-label" id="p-l1" data-layout-allow-overlap>APARTAMENT DO WYNAJĘCIA<span>WARSZAWA · ŚRÓDMIEŚCIE</span></p>
+      <p class="p-label" id="p-l2" data-layout-allow-overlap>DOM NA SPRZEDAŻ<span>POMORSKIE · SOPOT · SOPOT DOLNY</span></p>
+      <p class="p-label" id="p-l3" data-layout-allow-overlap>DOM NA SPRZEDAŻ<span>MAZOWIECKIE · ZALESIE GÓRNE · PIASECZNO</span></p>
+      <p class="p-label" id="p-l4" data-layout-allow-overlap>JURATA<span>JASTARNIA · ŚWIĘTOPEŁKA</span></p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const T = [0, 1.5, 3.0, 4.5];
+      tl.fromTo("#p-title", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 0.2);
+      [1, 2, 3, 4].forEach((i, k) => {
+        const t = T[k];
+        // Each property gets its own slow drift, alternating direction; cuts are hard cuts on the beat.
+        tl.fromTo("#p-s" + i + " img", { scale: 1.06, x: k % 2 ? -30 : 30 }, { scale: 1.12, x: k % 2 ? 30 : -30, duration: 1.6, ease: "none" }, t);
+        if (k > 0) {
+          tl.set("#p-s" + i, { opacity: 1 }, t);
+          tl.set("#p-l" + (i - 1), { opacity: 0 }, t);
+        }
+        tl.fromTo("#p-l" + i, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, t + 0.1);
+      });
+      window.__timelines["props"] = tl;
+    })();
+  </script>
+</template>

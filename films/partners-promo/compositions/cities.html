@@ -1,0 +1,39 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #c-stage { position: absolute; inset: 0; background: #0b0b0b; }
+    .c-strip { position: absolute; top: 0; width: 240px; height: 1080px; overflow: hidden; border-right: 1px solid rgba(255,255,255,.12); }
+    .c-strip img { position: absolute; left: -32px; top: 0; width: 304px; height: 1080px; object-fit: cover; display: block; }
+    .c-strip::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,10,10,.75) 0%, rgba(10,10,10,0) 45%); }
+    .c-name { position: absolute; left: 0; right: 0; bottom: 70px; z-index: 2; text-align: center; font: 600 24px/1 "Mulish"; letter-spacing: .3em; color: #fff; }
+    #c-head { position: absolute; left: 0; right: 0; top: 120px; z-index: 3; text-align: center; font: 600 34px/1 "Mulish"; letter-spacing: .6em; color: #fff; }
+    #c-head-bg { position: absolute; left: 640px; width: 640px; top: 88px; height: 98px; z-index: 2; background: rgba(10,10,10,.55); }
+  </style>
+  <div id="root" data-composition-id="cities" data-width="1920" data-height="1080">
+    <div id="c-stage" class="clip" data-start="0" data-duration="6" data-track-index="0">
+      <div class="c-strip" id="c-0" style="left:0px"><img src="assets/img/nieruchomosci-Warszawa.jpg" alt="Warszawa" /><p class="c-name">WARSZAWA</p></div>
+      <div class="c-strip" id="c-1" style="left:240px"><img src="assets/img/nieruchomosci-gdansk.jpg" alt="Gdańsk" /><p class="c-name">GDAŃSK</p></div>
+      <div class="c-strip" id="c-2" style="left:480px"><img src="assets/img/nieruchomosci-gdynia.jpg" alt="Gdynia" /><p class="c-name">GDYNIA</p></div>
+      <div class="c-strip" id="c-3" style="left:720px"><img src="assets/img/nieruchomosci-sopot.jpg" alt="Sopot" /><p class="c-name">SOPOT</p></div>
+      <div class="c-strip" id="c-4" style="left:960px"><img src="assets/img/nieruchomosci-wroclaw.jpg" alt="Wrocław" /><p class="c-name">WROCŁAW</p></div>
+      <div class="c-strip" id="c-5" style="left:1200px"><img src="assets/img/nieruchomosci-poznan.jpg" alt="Poznań" /><p class="c-name">POZNAŃ</p></div>
+      <div class="c-strip" id="c-6" style="left:1440px"><img src="assets/img/nieruchomosci-krakow.jpg" alt="Kraków" /><p class="c-name">KRAKÓW</p></div>
+      <div class="c-strip" id="c-7" style="left:1680px"><img src="assets/img/nieruchomosci-katowice.jpg" alt="Katowice" /><p class="c-name">KATOWICE</p></div>
+      <div id="c-head-bg"></div>
+      <p id="c-head">ODDZIAŁ</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // Strips drop in one after another, alternating from top and bottom; names land with their strip.
+      for (let i = 0; i < 8; i++) {
+        tl.fromTo("#c-" + i, { y: i % 2 ? 1080 : -1080 }, { y: 0, duration: 0.6, ease: "expo.out" }, 0.1 + i * 0.12);
+        tl.fromTo("#c-" + i + " img", { y: i % 2 ? -40 : 40 }, { y: i % 2 ? 40 : -40, duration: 5.6, ease: "none" }, 0.1);
+      }
+      tl.fromTo(["#c-head-bg", "#c-head"], { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 1.2);
+      tl.to("#c-stage", { opacity: 0, duration: 0.25, ease: "power2.in" }, 5.75);
+      window.__timelines["cities"] = tl;
+    })();
+  </script>
+</template>

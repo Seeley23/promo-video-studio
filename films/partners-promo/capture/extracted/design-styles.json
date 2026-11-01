@@ -1,0 +1,30 @@
+{
+  "typography": [],
+  "spacing": {
+    "observed": [],
+    "baseUnit": 8
+  },
+  "radius": [],
+  "shadows": [],
+  "buttons": [],
+  "cards": [],
+  "nav": {
+    "label": "navigation",
+    "background": "#FFFFFF",
+    "backgroundImage": "",
+    "backdropFilter": "",
+    "color": "#262626",
+    "padding": "0px",
+    "borderRadius": "0px",
+    "border": "0px none rgb(38, 38, 38)",
+    "boxShadow": "none",
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "height": "140347px"
+  },
+  "chips": [],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [],
+  "glass": []
+}

@@ -1,0 +1,31 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #e-stage { position: absolute; inset: 0; background: #fff; }
+    #e-logo { position: absolute; left: 640px; top: 210px; width: 640px; height: 286px; }
+    #e-logo img { width: 640px; height: 286px; display: block; }
+    #e-line { position: absolute; left: 0; right: 0; top: 560px; text-align: center; font: 300 40px/1.3 "Mulish"; color: var(--color-ink); }
+    #e-btnw { position: absolute; left: 0; right: 0; top: 660px; text-align: center; }
+    #e-btn { display: inline-block; padding: 26px 56px; border: 2px solid var(--color-ink); font: 600 28px/1 "Mulish"; letter-spacing: .3em; color: var(--color-ink); }
+    #e-url { position: absolute; left: 0; right: 0; top: 820px; text-align: center; font: 400 30px/1 "Mulish"; letter-spacing: .12em; color: var(--grey); }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+    <div id="e-stage" class="clip" data-start="0" data-duration="4" data-track-index="0">
+      <div id="e-logo"><img src="assets/img/logo-color.svg" alt="Partners International" /></div>
+      <p id="e-line">30 lat doświadczenia w nieruchomościach premium</p>
+      <div id="e-btnw"><span id="e-btn">ZAPYTAJ O OFERTĘ</span></div>
+      <p id="e-url">partnersinternational.pl</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#e-stage", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
+      tl.fromTo("#e-logo", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "power3.out" }, 0.25);
+      tl.fromTo("#e-line", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.8);
+      tl.fromTo("#e-btn", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.0);
+      tl.fromTo("#e-url", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 1.2);
+      window.__timelines["endcard"] = tl;
+    })();
+  </script>
+</template>
