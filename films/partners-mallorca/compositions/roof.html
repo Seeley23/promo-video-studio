@@ -1,0 +1,40 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #roof-stage { position: absolute; inset: 0; background: #0b0b0b; }
+    #roof-stage .shot { position: absolute; inset: 0; overflow: hidden; }
+    #roof-stage .shot img { width: 1920px; height: 1080px; object-fit: cover; display: block; }
+    #roof-stage .shot.pano img { width: 2920px; height: 1080px; }
+    #roof-shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,8,8,.62) 0%, rgba(8,8,8,.25) 38%, rgba(8,8,8,0) 60%), linear-gradient(90deg, rgba(8,8,8,.45) 0%, rgba(8,8,8,0) 60%); }
+    #roof-kicker { position: absolute; left: 140px; top: 640px; font: 600 28px/1 "Mulish"; letter-spacing: .5em; color: #fff; }
+    #roof-rule { position: absolute; left: 140px; top: 688px; width: 120px; height: 3px; background: #96003a; transform-origin: left center; }
+    #roof-title { position: absolute; left: 136px; top: 716px; width: 1200px; font: 200 92px/1.08 "Mulish"; color: #fff; }
+    #roof-sub { position: absolute; left: 140px; top: 940px; display: none; font: 400 30px/1 "Mulish"; letter-spacing: .32em; color: rgba(255,255,255,.85); }
+  </style>
+  <div id="root" data-composition-id="roof" data-width="1920" data-height="1080">
+    <div id="roof-stage" class="clip" data-start="0" data-duration="4.4" data-track-index="0" data-layout-allow-overlap>
+      <div class="shot" id="roof-s0"><img src="assets/img/willa-na-sprzedaz-cala-domingos-mallorca-3.jpg" alt="Villa Tramuntana, Cala Domingos – zdjęcie 3" /></div>
+      <div class="shot" id="roof-s1" style="opacity:0"><img src="assets/img/willa-na-sprzedaz-cala-domingos-mallorca-4.jpg" alt="Villa Tramuntana, Cala Domingos – zdjęcie 4" /></div>
+      <div id="roof-shade"></div>
+      <p id="roof-kicker">09:00</p>
+      <div id="roof-rule"></div>
+      <h2 id="roof-title">Taras na dachu z widokiem na morze</h2>
+      <p id="roof-sub"></p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // Photos are the listing's own; the camera drifts slowly, copy lands once and holds.
+      tl.fromTo("#roof-s0 img", { scale: 1.04, x: -40, y: 0 }, { scale: 1.1, x: 20, y: 0, duration: 2.20, ease: "none" }, 0);
+      tl.fromTo("#roof-s1 img", { scale: 1.1, x: 20, y: 0 }, { scale: 1.04, x: -30, y: 0, duration: 2.20, ease: "none" }, 2.2);
+      tl.set("#roof-s1", { opacity: 1 }, 2.2);
+      tl.fromTo("#roof-kicker", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "power3.out" }, 0.25);
+      tl.fromTo("#roof-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.45);
+      tl.fromTo("#roof-title", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0.55);
+      tl.fromTo("#roof-sub", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.95);
+      tl.to(["#roof-kicker", "#roof-rule", "#roof-title", "#roof-sub"], { opacity: 0, duration: 0.25, ease: "power2.in" }, 4.4 - 0.3);
+      window.__timelines["roof"] = tl;
+    })();
+  </script>
+</template>

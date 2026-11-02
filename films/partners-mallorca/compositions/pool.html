@@ -1,0 +1,40 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #pool-stage { position: absolute; inset: 0; background: #0b0b0b; }
+    #pool-stage .shot { position: absolute; inset: 0; overflow: hidden; }
+    #pool-stage .shot img { width: 1920px; height: 1080px; object-fit: cover; display: block; }
+    #pool-stage .shot.pano img { width: 2920px; height: 1080px; }
+    #pool-shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,8,8,.62) 0%, rgba(8,8,8,.25) 38%, rgba(8,8,8,0) 60%), linear-gradient(90deg, rgba(8,8,8,.45) 0%, rgba(8,8,8,0) 60%); }
+    #pool-kicker { position: absolute; left: 140px; top: 640px; font: 600 28px/1 "Mulish"; letter-spacing: .5em; color: #fff; }
+    #pool-rule { position: absolute; left: 140px; top: 688px; width: 120px; height: 3px; background: #96003a; transform-origin: left center; }
+    #pool-title { position: absolute; left: 136px; top: 716px; width: 1200px; font: 200 92px/1.08 "Mulish"; color: #fff; }
+    #pool-sub { position: absolute; left: 140px; top: 940px; display: block; font: 400 30px/1 "Mulish"; letter-spacing: .32em; color: rgba(255,255,255,.85); }
+  </style>
+  <div id="root" data-composition-id="pool" data-width="1920" data-height="1080">
+    <div id="pool-stage" class="clip" data-start="0" data-duration="4.4" data-track-index="0" data-layout-allow-overlap>
+      <div class="shot" id="pool-s0"><img src="assets/img/willa-na-sprzedaz-cala-domingos-mallorca-2.jpg" alt="Villa Tramuntana, Cala Domingos – zdjęcie 2" /></div>
+      <div class="shot pano" id="pool-s1" style="opacity:0"><img src="assets/img/willa-na-sprzedaz-cala-domingos-mallorca-22.jpg" alt="Villa Tramuntana, Cala Domingos – zdjęcie 22" /></div>
+      <div id="pool-shade"></div>
+      <p id="pool-kicker">13:00</p>
+      <div id="pool-rule"></div>
+      <h2 id="pool-title">Podgrzewany basen</h2>
+      <p id="pool-sub">1 MIN DO PLAŻY</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // Photos are the listing's own; the camera drifts slowly, copy lands once and holds.
+      tl.fromTo("#pool-s0 img", { scale: 1.02, x: 0, y: 0 }, { scale: 1.1, x: 0, y: -20, duration: 2.20, ease: "none" }, 0);
+      tl.fromTo("#pool-s1 img", { x: 0 }, { x: -1000, duration: 2.20, ease: "none" }, 2.2);
+      tl.set("#pool-s1", { opacity: 1 }, 2.2);
+      tl.fromTo("#pool-kicker", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "power3.out" }, 0.25);
+      tl.fromTo("#pool-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.45);
+      tl.fromTo("#pool-title", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0.55);
+      tl.fromTo("#pool-sub", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.95);
+      tl.to(["#pool-kicker", "#pool-rule", "#pool-title", "#pool-sub"], { opacity: 0, duration: 0.25, ease: "power2.in" }, 4.4 - 0.3);
+      window.__timelines["pool"] = tl;
+    })();
+  </script>
+</template>

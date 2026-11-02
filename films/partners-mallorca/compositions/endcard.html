@@ -1,0 +1,35 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #e-stage { position: absolute; inset: 0; background: #0b0b0b; }
+    #e-photo { position: absolute; inset: 0; opacity: .28; }
+    #e-photo img { width: 1920px; height: 1080px; object-fit: cover; display: block; }
+    #e-logo { position: absolute; left: 700px; top: 200px; width: 520px; height: 232px; }
+    #e-logo img { width: 520px; height: 232px; display: block; }
+    #e-line { position: absolute; left: 0; right: 0; top: 500px; text-align: center; font: 200 54px/1.2 "Mulish"; color: #fff; }
+    #e-btnw { position: absolute; left: 0; right: 0; top: 610px; text-align: center; }
+    #e-btn { display: inline-block; padding: 26px 56px; border: 2px solid #fff; font: 600 28px/1 "Mulish"; letter-spacing: .3em; color: #fff; }
+    #e-contact { position: absolute; left: 0; right: 0; top: 770px; text-align: center; font: 400 30px/1.6 "Mulish"; letter-spacing: .08em; color: rgba(255,255,255,.85); }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+    <div id="e-stage" class="clip" data-start="0" data-duration="3.6" data-track-index="0">
+      <div id="e-photo"><img src="assets/img/willa-na-sprzedaz-cala-domingos-mallorca-13.jpg" alt="Basen nocą" /></div>
+      <div id="e-logo"><img src="assets/logo-white.svg" alt="Partners International" /></div>
+      <p id="e-line">Umów prywatną prezentację</p>
+      <div id="e-btnw"><span id="e-btn">ZAPYTAJ O OFERTĘ</span></div>
+      <p id="e-contact">+48 794 293 000 · zagranica@partnersinternational.pl</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#e-stage", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0);
+      tl.fromTo("#e-photo img", { scale: 1.08 }, { scale: 1.0, duration: 3.6, ease: "none" }, 0);
+      tl.fromTo("#e-logo", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.8, ease: "power3.out" }, 0.3);
+      tl.fromTo("#e-line", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.9);
+      tl.fromTo("#e-btn", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 1.15);
+      tl.fromTo("#e-contact", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 1.35);
+      window.__timelines["endcard"] = tl;
+    })();
+  </script>
+</template>
