@@ -6,13 +6,15 @@ Zasada: jedna myśl na scenę, napisy dosłownie ze strony, spokojne przenikania
 
 | Czas | Obraz | Napis | Lektor (~2 słowa/s) |
 |---|---|---|---|
-| 0–5 s | Tabletki na linii produkcyjnej (film z nagłówka strony, bez wypalonego napisu) | licznik 0 → 35: „Ponad 35 lat” · „doświadczenia w wytwarzaniu produktów leczniczych” · „od 1990” | Od ponad trzydziestu pięciu lat wytwarzamy produkty lecznicze. |
-| 5–11 s | Czysta strefa produkcyjna (zdjęcie z podstrony leków) | produkcja kontraktowa leków · leki w postaci tabletek i kapsułek · proszku · płynu | Dziś produkujemy leki dla Twojej marki – tabletki, kapsułki, proszki i płyny. |
-| 11–17 s | Linia kroków rysuje się na białym tle | od pomysłu do gotowego wyrobu · pomysł → formulacja → opakowanie → rejestracja → produkcja → wdrożenie | Prowadzimy cały proces: od pomysłu, przez rejestrację, po wdrożenie na rynek. |
-| 17–22 s | Kapsułki w karuzeli maszyny (zdjęcie z „o nas”) | Rocznie wytwarzamy: 1 000 000 000 tabletek i kapsułek | Rocznie to miliard tabletek i kapsułek. |
-| 22–26 s | Laboratorium kontroli jakości, trzy pieczęcie certyfikatów | GMP · HACCP · ISO 22000:2018 | W standardzie GMP, HACCP i ISO 22000. |
-| 26–30 s | Logo, hasło, kontakt | nasza farmaceutyczna jakość, Twój sukces w biznesie · Skonsultuj swój projekt z ekspertami · sprzedaz@eubioco.eu · eubioco.eu | eubioco. Skonsultuj swój projekt z ekspertami. |
+| 0–5 s | Tabletki na linii produkcyjnej (prawy fragment filmu z nagłówka strony) | od 1990 · Ponad 35 lat (licznik) · doświadczenia w wytwarzaniu produktów leczniczych | Od ponad trzydziestu pięciu lat wytwarzamy produkty lecznicze. |
+| 5–10 s | Czysta strefa produkcyjna | produkcja kontraktowa leków · Oferujemy produkcję kontraktową produktów leczniczych. · leki w postaci: tabletek i kapsułek, proszku, płynu | Dziś produkujemy leki dla Twojej marki – tabletki, kapsułki, proszki i płyny. |
+| 10–15,5 s | Linia kroków rysuje się na białym tle | kompleksowa obsługa CDMO · od pomysłu do gotowego wyrobu · analiza → formulacja → opakowanie → rejestracja → produkcja → sprzedaż | Prowadzimy cały proces: od pomysłu, przez rejestrację, po sprzedaż. |
+| 15,5–20 s | Kapsułki w karuzeli maszyny | Rocznie wytwarzamy: 1 000 000 000 tabletek i kapsułek | Rocznie to miliard tabletek i kapsułek. |
+| 20–23,5 s | Trzy pieczęcie certyfikatów | Spełniamy najwyższe standardy jakości i bezpieczeństwa · GMP · HACCP · ISO 22000:2018 | W standardzie GMP, HACCP i ISO. |
+| 23,5–26,5 s | 12 logotypów z sekcji „zaufali nam” | zaufali nam | Zaufały nam czołowe firmy z branży. |
+| 26,5–30 s | Logo, hasło, kontakt | nasza farmaceutyczna jakość, Twój sukces w biznesie · Skonsultuj swój projekt z ekspertami · sprzedaz@eubioco.eu · eubioco.eu | eubioco. Skonsultuj swój projekt z ekspertami. |
 
-Pominięte celowo (za dużo informacji na 30 s): suplementy, kosmetyki, produkty dla zwierząt, logotypy klientów z sekcji „zaufali nam”, mapa eksportu.
-Do potwierdzenia z klientem: czy pokazać logotypy klientów (to znaki towarowe innych firm) – można dodać jako osobną wersję.
+Pominięte celowo (za dużo informacji na 30 s): suplementy, kosmetyki, produkty dla zwierząt, mapa eksportu.
+Logotypy klientów: dodane na prośbę zamawiającego; to znaki towarowe innych firm, pokazane tak jak w sekcji „zaufali nam” na stronie – warto, by eubioco potwierdziło zgodę na użycie w reklamie.
+Lektor sceny „zaufali nam” („czołowe firmy z branży”) to ocena, nie cytat – do akceptacji klienta.
 Filmy z nagłówka strony mają wypalony napis (m.in. literówka „Fromy płynne”), dlatego używany jest tylko prawy fragment kadru.

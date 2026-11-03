@@ -1,0 +1,26 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #jakosc-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    #jakosc-t { position: absolute; left: 0; width: 1920px; top: 190px; text-align: center; font: 700 64px/1.15 "Montserrat"; color: var(--color-ink); }
+    .jakosc-b { position: absolute; top: 400px; width: 380px; height: 380px; }
+    #jakosc-b1 { left: 290px; } #jakosc-b2 { left: 770px; } #jakosc-b3 { left: 1250px; }
+  </style>
+  <div id="root" data-composition-id="jakosc" data-width="1920" data-height="1080">
+    <div id="jakosc-stage" class="clip" data-start="0" data-duration="4" data-track-index="0">
+      <h2 id="jakosc-t">Spełniamy najwyższe standardy<br />jakości i bezpieczeństwa</h2>
+      <img class="jakosc-b" id="jakosc-b1" src="assets/img/cert-gmp.webp" alt="GMP Certificate" />
+      <img class="jakosc-b" id="jakosc-b2" src="assets/img/cert-haccp.webp" alt="HACCP Certified" />
+      <img class="jakosc-b" id="jakosc-b3" src="assets/img/cert-iso.webp" alt="ISO 22000:2018 Certified" />
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#jakosc-stage", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
+      tl.fromTo("#jakosc-t", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.3);
+      tl.fromTo(".jakosc-b", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.7, stagger: 0.3, ease: "power3.out" }, 0.6);
+      window.__timelines["jakosc"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,33 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #hook-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    #hook-card { position: absolute; left: 900px; top: 120px; width: 1020px; height: 840px; border-radius: 48px 0 0 48px; overflow: hidden; background: #E9EEF3; }
+    #hook-vid { position: absolute; left: 0; top: 0; width: 1020px; height: 840px; object-fit: cover; object-position: 100% 50%; }
+    #hook-k { position: absolute; left: 140px; top: 250px; font: 700 34px/1 "Montserrat"; color: var(--color-green-text); letter-spacing: .04em; }
+    #hook-big { position: absolute; left: 132px; top: 310px; width: 740px; font: 800 184px/1 "Montserrat"; letter-spacing: -0.03em; color: var(--color-ink); white-space: nowrap; }
+    #hook-pre { display: block; font: 700 72px/1.1 "Montserrat"; letter-spacing: 0; }
+    #hook-sub { position: absolute; left: 140px; top: 640px; width: 700px; font: 600 42px/1.25 "Montserrat"; color: var(--color-ink); }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+    <div id="hook-stage" class="clip" data-start="0" data-duration="5.5" data-track-index="0">
+      <p id="hook-k">od 1990</p>
+      <h1 id="hook-big"><small id="hook-pre">Ponad</small><span id="hook-n">35</span> lat</h1>
+      <p id="hook-sub">doświadczenia w wytwarzaniu produktów leczniczych</p>
+    </div>
+    <div id="hook-card"><video id="hook-vid" class="clip" src="assets/img/hero1.mp4" data-start="0" data-duration="5.5" data-playback-rate="0.9" data-track-index="1" muted playsinline></video></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      
+      tl.fromTo("#hook-card", { x: 120 }, { x: 0, duration: 1.2, ease: "power3.out" }, 0);
+      tl.fromTo("#hook-k", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.2);
+      tl.fromTo("#hook-big", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.3);
+      const c = { v: 1 };
+      tl.fromTo(c, { v: 1 }, { v: 35, duration: 1.6, ease: "power2.out", onUpdate: () => { document.querySelector("#hook-n").textContent = Math.round(c.v); } }, 0.3);
+      tl.fromTo("#hook-sub", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.4);
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>

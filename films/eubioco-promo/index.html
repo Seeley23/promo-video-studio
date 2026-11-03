@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pl"
+  data-composition-variables='[
+    {"id":"color-ground","type":"color","label":"Tło","default":"#FFFFFF"},
+    {"id":"color-ink","type":"color","label":"Tekst","default":"#004B8D"},
+    {"id":"color-accent","type":"color","label":"Akcent","default":"#33CB66"},
+    {"id":"font-display","type":"string","label":"Font","default":"Montserrat"}
+  ]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Montserrat"; font-style: normal; font-weight: 100 900; font-display: block;
+        src: url(assets/fonts/montserrat-latin-ext-wght-normal.woff2) format("woff2");
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+      @font-face { font-family: "Montserrat"; font-style: normal; font-weight: 100 900; font-display: block;
+        src: url(assets/fonts/montserrat-latin-wght-normal.woff2) format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      :root { --color-ground: #FFFFFF; --color-ink: #004B8D; --color-accent: #33CB66; --color-soft: #EEF4FA; --color-green-text: #1B8F45; --font-display: "Montserrat"; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--color-ground); font-family: var(--font-display), sans-serif; color: var(--color-ink); }
+      #ground { position: absolute; inset: 0; background: var(--color-ground); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30" data-width="1920" data-height="1080">
+      <div id="ground"></div>
+      <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="5.5" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="leki" data-composition-id="leki" data-composition-src="compositions/leki.html" data-start="5" data-duration="5.5" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="proces" data-composition-id="proces" data-composition-src="compositions/proces.html" data-start="10" data-duration="6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="skala" data-composition-id="skala" data-composition-src="compositions/skala.html" data-start="15.5" data-duration="5" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="jakosc" data-composition-id="jakosc" data-composition-src="compositions/jakosc.html" data-start="20" data-duration="4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="klienci" data-composition-id="klienci" data-composition-src="compositions/klienci.html" data-start="23.5" data-duration="3.5" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="endcard" data-composition-id="endcard" data-composition-src="compositions/endcard.html" data-start="26.5" data-duration="3.5" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <!-- Quiet sound only on two visible actions: the process line and the CTA. -->
+      <audio id="sfx-line" class="clip" src="assets/sfx/whoosh.mp3" data-start="10.9" data-duration="0.57" data-track-index="10" data-volume="0.18"></audio>
+      <audio id="sfx-cta" class="clip" src="assets/sfx/click-soft.mp3" data-start="28.4" data-duration="0.37" data-track-index="11" data-volume="0.4"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

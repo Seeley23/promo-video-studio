@@ -1,0 +1,35 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #skala-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    #skala-photo { position: absolute; inset: 0; }
+    #skala-photo img { width: 1920px; height: 1080px; object-fit: cover; object-position: 80% 50%; display: block; }
+    #skala-veil { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.8) 45%, rgba(255,255,255,0) 75%); }
+    #skala-k { position: absolute; left: 140px; top: 330px; font: 600 44px/1 "Montserrat"; color: var(--color-ink); }
+    #skala-n { position: absolute; left: 134px; top: 400px; font: 800 150px/1 "Montserrat"; letter-spacing: -0.02em; color: var(--color-ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    #skala-s { position: absolute; left: 140px; top: 580px; font: 700 54px/1 "Montserrat"; color: var(--color-green-text); }
+  </style>
+  <div id="root" data-composition-id="skala" data-width="1920" data-height="1080">
+    <div id="skala-stage" class="clip" data-start="0" data-duration="5" data-track-index="0">
+      <div id="skala-photo"><img src="assets/img/capsule-wheel.jpg" alt="Kapsułki w maszynie" /></div>
+      <div id="skala-veil"></div>
+      <p id="skala-k">Rocznie wytwarzamy:</p>
+      <p id="skala-n">1 000 000 000</p>
+      <p id="skala-s">tabletek i kapsułek</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#skala-stage", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
+      tl.fromTo("#skala-photo", { scale: 1.0 }, { scale: 1.06, transformOrigin: "80% 50%", duration: 5, ease: "none" }, 0);
+      tl.fromTo("#skala-k", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.4);
+      tl.fromTo("#skala-n", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.6);
+      const c = { v: 0 };
+      const fmt = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      tl.fromTo(c, { v: 0 }, { v: 1000000000, duration: 2.0, ease: "power3.out", onUpdate: () => { document.querySelector("#skala-n").textContent = fmt(c.v); } }, 0.6);
+      tl.fromTo("#skala-s", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 1.4);
+      window.__timelines["skala"] = tl;
+    })();
+  </script>
+</template>

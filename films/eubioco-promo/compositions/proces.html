@@ -1,0 +1,40 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #proces-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    #proces-k { position: absolute; left: 0; width: 1920px; top: 250px; text-align: center; font: 600 34px/1 "Montserrat"; color: var(--color-green-text); }
+    #proces-t { position: absolute; left: 0; width: 1920px; top: 310px; text-align: center; font: 700 88px/1.05 "Montserrat"; letter-spacing: -0.02em; color: var(--color-ink); }
+    #proces-line { position: absolute; left: 200px; width: 1520px; top: 618px; height: 6px; border-radius: 3px; background: var(--color-accent); transform-origin: left center; }
+    #proces-base { position: absolute; left: 200px; width: 1520px; top: 618px; height: 6px; border-radius: 3px; background: #DCE6F0; }
+    .proces-dot { position: absolute; top: 593px; width: 56px; height: 56px; border-radius: 50%; background: #fff; border: 6px solid var(--color-ink); }
+    .proces-lab { position: absolute; top: 690px; width: 300px; text-align: center; font: 600 36px/1 "Montserrat"; color: var(--color-ink); }
+  </style>
+  <div id="root" data-composition-id="proces" data-width="1920" data-height="1080">
+    <div id="proces-stage" class="clip" data-start="0" data-duration="6" data-track-index="0" data-layout-allow-overlap>
+      <p id="proces-k">kompleksowa obsługa CDMO</p>
+      <h2 id="proces-t">od pomysłu do gotowego wyrobu</h2>
+      <div id="proces-base"></div><div id="proces-line"></div>
+      <div class="proces-dot" id="proces-d0" style="left:172px"></div><p class="proces-lab" id="proces-l0" style="left:50px">analiza</p>
+      <div class="proces-dot" id="proces-d1" style="left:476px"></div><p class="proces-lab" id="proces-l1" style="left:354px">formulacja</p>
+      <div class="proces-dot" id="proces-d2" style="left:780px"></div><p class="proces-lab" id="proces-l2" style="left:658px">opakowanie</p>
+      <div class="proces-dot" id="proces-d3" style="left:1084px"></div><p class="proces-lab" id="proces-l3" style="left:962px">rejestracja</p>
+      <div class="proces-dot" id="proces-d4" style="left:1388px"></div><p class="proces-lab" id="proces-l4" style="left:1266px">produkcja</p>
+      <div class="proces-dot" id="proces-d5" style="left:1692px"></div><p class="proces-lab" id="proces-l5" style="left:1570px">sprzedaż</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#proces-stage", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
+      tl.fromTo("#proces-k", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.3);
+      tl.fromTo("#proces-t", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.4);
+      tl.fromTo("#proces-line", { scaleX: 0 }, { scaleX: 1, duration: 3.0, ease: "power1.inOut" }, 0.9);
+      for (let i = 0; i < 6; i++) {
+        const t = 0.9 + i * 0.6;
+        tl.fromTo("#proces-l" + i, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, t);
+        tl.fromTo("#proces-d" + i, { backgroundColor: "#ffffff", borderColor: "#004B8D" }, { backgroundColor: "#33CB66", borderColor: "#33CB66", duration: 0.3, ease: "power1.out" }, t);
+      }
+      window.__timelines["proces"] = tl;
+    })();
+  </script>
+</template>

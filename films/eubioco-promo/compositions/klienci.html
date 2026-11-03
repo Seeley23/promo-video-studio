@@ -1,0 +1,38 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #klienci-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    #klienci-t { position: absolute; left: 0; width: 1920px; top: 130px; text-align: center; font: 700 72px/1 "Montserrat"; color: var(--color-ink); }
+    #klienci-g { position: absolute; left: 160px; top: 270px; width: 1600px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+    .klienci-c { height: 200px; border-radius: 24px; background: #fff; border: 2px solid #E3EAF2; display: flex; align-items: center; justify-content: center; padding: 30px 44px; }
+    .klienci-c img { max-width: 100%; max-height: 120px; object-fit: contain; }
+  </style>
+  <div id="root" data-composition-id="klienci" data-width="1920" data-height="1080">
+    <div id="klienci-stage" class="clip" data-start="0" data-duration="3.5" data-track-index="0">
+      <h2 id="klienci-t">zaufali nam</h2>
+      <div id="klienci-g">
+        <div class="klienci-c"><img src="assets/clients/logo-Herbapol.png" alt="logo" /></div>
+        <div class="klienci-c"><img src="assets/clients/neuca.png" alt="neuca" /></div>
+        <div class="klienci-c"><img src="assets/clients/polfarmex-1.png" alt="polfarmex" /></div>
+        <div class="klienci-c"><img src="assets/clients/synoptis.png" alt="synoptis" /></div>
+        <div class="klienci-c"><img src="assets/clients/swiss-pharm.png" alt="swiss" /></div>
+        <div class="klienci-c"><img src="assets/clients/MEDICARE-logo-RGB-scaled.jpg" alt="MEDICARE" /></div>
+        <div class="klienci-c"><img src="assets/clients/cosmedica-1.png" alt="cosmedica" /></div>
+        <div class="klienci-c"><img src="assets/clients/wellmedica-1.png" alt="wellmedica" /></div>
+        <div class="klienci-c"><img src="assets/clients/nikalab.png" alt="nikalab" /></div>
+        <div class="klienci-c"><img src="assets/clients/lubfarm.png" alt="lubfarm" /></div>
+        <div class="klienci-c"><img src="assets/clients/BIOCANTO-LOGO-1.png" alt="BIOCANTO" /></div>
+        <div class="klienci-c"><img src="assets/clients/dino_logo-1.jpg" alt="dino_logo" /></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#klienci-stage", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
+      tl.fromTo("#klienci-t", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.2);
+      tl.fromTo(".klienci-c", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: "power2.out" }, 0.4);
+      window.__timelines["klienci"] = tl;
+    })();
+  </script>
+</template>

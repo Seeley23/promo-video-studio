@@ -1,0 +1,31 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #endcard-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    #endcard-logo { position: absolute; left: 610px; top: 230px; width: 700px; height: auto; }
+    #endcard-t { position: absolute; left: 0; width: 1920px; top: 470px; text-align: center; font: 600 52px/1.2 "Montserrat"; color: var(--color-ink); }
+    #endcard-btn { position: absolute; left: 560px; width: 800px; top: 620px; height: 100px; border-radius: 99px; background: var(--color-ink); color: #fff; display: flex; align-items: center; justify-content: center; font: 700 38px/1 "Montserrat"; }
+    #endcard-c { position: absolute; left: 0; width: 1920px; top: 790px; text-align: center; font: 600 38px/1 "Montserrat"; color: var(--color-ink); }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+    <div id="endcard-stage" class="clip" data-start="0" data-duration="3.5" data-track-index="0">
+      <img id="endcard-logo" src="assets/img/logo.svg" alt="eubioco" />
+      <p id="endcard-t">nasza farmaceutyczna jakość, Twój sukces w biznesie</p>
+      <div id="endcard-btn">Skonsultuj swój projekt z ekspertami</div>
+      <p id="endcard-c">sprzedaz@eubioco.eu · eubioco.eu</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#endcard-stage", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
+      tl.fromTo("#endcard-logo", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.3);
+      tl.fromTo("#endcard-t", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.7);
+      tl.fromTo("#endcard-btn", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.1);
+      tl.fromTo("#endcard-c", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 1.1);
+      tl.to("#endcard-btn", { scale: 0.96, duration: 0.1, ease: "power2.in" }, 1.9);
+      tl.to("#endcard-btn", { scale: 1, duration: 0.3, ease: "back.out(3)" }, 2.0);
+      window.__timelines["endcard"] = tl;
+    })();
+  </script>
+</template>

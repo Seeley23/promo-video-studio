@@ -1,0 +1,35 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #leki-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    #leki-photo { position: absolute; inset: 0; }
+    #leki-photo img { width: 1920px; height: 1080px; object-fit: cover; object-position: 70% 50%; display: block; }
+    #leki-veil { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.75) 40%, rgba(255,255,255,0) 70%); }
+    #leki-t { position: absolute; left: 140px; top: 270px; width: 1100px; font: 700 88px/1.05 "Montserrat"; letter-spacing: -0.02em; color: var(--color-ink); }
+    #leki-s { position: absolute; left: 144px; top: 500px; width: 760px; font: 500 40px/1.3 "Montserrat"; color: var(--color-ink); }
+    #leki-forms { position: absolute; left: 140px; top: 680px; display: flex; gap: 20px; align-items: center; }
+    #leki-forms span.lab { font: 600 34px/1 "Montserrat"; color: var(--color-ink); margin-right: 8px; }
+    .leki-chip { height: 76px; padding: 0 34px; border-radius: 99px; border: 3px solid var(--color-accent); background: #fff; display: flex; align-items: center; font: 600 34px/1 "Montserrat"; color: var(--color-ink); }
+  </style>
+  <div id="root" data-composition-id="leki" data-width="1920" data-height="1080">
+    <div id="leki-stage" class="clip" data-start="0" data-duration="5.5" data-track-index="0">
+      <div id="leki-photo"><img src="assets/img/cleanroom.webp" alt="Strefa produkcyjna eubioco" /></div>
+      <div id="leki-veil"></div>
+      <h2 id="leki-t">produkcja kontraktowa<br />leków</h2>
+      <p id="leki-s">Oferujemy produkcję kontraktową produktów leczniczych.</p>
+      <div id="leki-forms"><span class="lab">leki w postaci</span><p class="leki-chip">tabletek i kapsułek</p><p class="leki-chip">proszku</p><p class="leki-chip">płynu</p></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#leki-stage", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 0);
+      tl.fromTo("#leki-photo", { scale: 1.06 }, { scale: 1.0, transformOrigin: "70% 50%", duration: 5.5, ease: "none" }, 0);
+      tl.fromTo("#leki-t", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.4);
+      tl.fromTo("#leki-s", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power2.out" }, 0.9);
+      tl.fromTo("#leki-forms .lab", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 1.4);
+      tl.fromTo(".leki-chip", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.25, ease: "power3.out" }, 1.6);
+      window.__timelines["leki"] = tl;
+    })();
+  </script>
+</template>
