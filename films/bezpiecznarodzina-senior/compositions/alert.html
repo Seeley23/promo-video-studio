@@ -1,0 +1,31 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #alert-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    .alert-kick { font: 600 32px/1 "DM Sans"; color: var(--color-accent); letter-spacing: .01em; }
+    #alert-disc { position: absolute; left: 1080px; top: 110px; width: 860px; height: 860px; border-radius: 50%; background: radial-gradient(circle, #E3E6FF 0%, rgba(227,230,255,0) 70%); }
+    #alert-phone { position: absolute; left: 1120px; top: 150px; width: 780px; height: auto; }
+    #alert-k { position: absolute; left: 140px; top: 400px; }
+    #alert-t { position: absolute; left: 140px; top: 460px; width: 860px; font: 700 72px/1.1 "DM Sans"; letter-spacing: -0.02em; color: var(--color-ink); }
+  </style>
+  <div id="root" data-composition-id="alert" data-width="1920" data-height="1080">
+    <div id="alert-stage" class="clip" data-start="0" data-duration="6.6" data-track-index="0">
+      <div id="alert-disc"></div>
+      <img id="alert-phone" src="assets/img/app-babcia.png" alt="Aplikacja dla opiekuna: Babcia: Upadek" />
+      <p id="alert-k" class="alert-kick">Aplikacja dla opiekuna</p>
+      <h2 id="alert-t">Spokój i kontrola, nawet gdy nie możesz być obok</h2>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#alert-stage", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 0);
+      tl.fromTo("#alert-phone", { y: 60 }, { y: 0, duration: 1.4, ease: "power2.out" }, 0);
+      tl.to("#alert-phone", { y: -14, duration: 4.6, ease: "sine.inOut" }, 1.4);
+      tl.fromTo("#alert-disc", { scale: 0.9, opacity: 0.6 }, { scale: 1.05, opacity: 1, duration: 6, ease: "sine.inOut" }, 0);
+      tl.fromTo("#alert-k", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 0.7);
+      tl.fromTo("#alert-t", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 1.1);
+      window.__timelines["alert"] = tl;
+    })();
+  </script>
+</template>

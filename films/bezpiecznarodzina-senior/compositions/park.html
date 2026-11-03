@@ -1,0 +1,29 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #park-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    .park-kick { font: 600 32px/1 "DM Sans"; color: var(--color-accent); letter-spacing: .01em; }
+    #park-vid { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; object-position: 72% 50%; }
+    #park-shade { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(13,26,72,.75) 0%, rgba(13,26,72,.35) 40%, rgba(13,26,72,0) 65%); }
+    #park-l1, #park-l2 { position: absolute; left: 120px; width: 780px; font: 700 80px/1.08 "DM Sans"; letter-spacing: -0.02em; color: #fff; }
+    #park-l1 { top: 150px; } #park-l2 { top: 345px; }
+  </style>
+  <div id="root" data-composition-id="park" data-width="1920" data-height="1080">
+    <video id="park-vid" class="clip" src="assets/img/hero.mp4" data-start="0" data-duration="6.6" data-playback-rate="0.62" data-track-index="0" muted playsinline></video>
+    <div id="park-stage" class="clip" data-start="0" data-duration="6.6" data-track-index="1" style="background: transparent">
+      <div id="park-shade"></div>
+      <h1 id="park-l1">Nie zawsze możesz być przy nich,</h1>
+      <h1 id="park-l2">ale zawsze możesz czuwać</h1>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      
+      tl.fromTo("#park-vid", { scale: 1.0 }, { scale: 1.06, transformOrigin: "60% 45%", duration: 6.6, ease: "none" }, 0);
+      tl.fromTo("#park-l1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 0.3);
+      tl.fromTo("#park-l2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 2.6);
+      window.__timelines["park"] = tl;
+    })();
+  </script>
+</template>

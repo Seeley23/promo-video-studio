@@ -1,0 +1,28 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #tele-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    .tele-kick { font: 600 32px/1 "DM Sans"; color: var(--color-accent); letter-spacing: .01em; }
+    #tele-card { position: absolute; left: 140px; top: 120px; width: 1640px; height: 820px; border-radius: 48px; overflow: hidden; background: #2B27DC; }
+    #tele-card img { position: absolute; right: 0; bottom: 0; width: 1640px; height: 820px; object-fit: cover; object-position: 100% 50%; }
+    #tele-t { position: absolute; left: 240px; top: 380px; width: 760px; font: 700 88px/1.05 "DM Sans"; letter-spacing: -0.02em; color: #fff; }
+    #tele-s { position: absolute; left: 244px; top: 500px; width: 700px; font: 500 46px/1.25 "DM Sans"; color: #fff; }
+  </style>
+  <div id="root" data-composition-id="tele" data-width="1920" data-height="1080">
+    <div id="tele-stage" class="clip" data-start="0" data-duration="6.6" data-track-index="0">
+      <div id="tele-card"><img src="assets/img/teleopieka.png" alt="Ratowniczka Teleopieki i aplikacja z alertem Upadek" /></div>
+      <h2 id="tele-t">Teraz z Teleopieką</h2>
+      <p id="tele-s">Ratownik kontaktuje się z Seniorem</p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#tele-stage", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 0);
+      tl.fromTo("#tele-card img", { scale: 1.06 }, { scale: 1.0, transformOrigin: "80% 60%", duration: 6.6, ease: "none" }, 0);
+      tl.fromTo("#tele-t", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 0.7);
+      tl.fromTo("#tele-s", { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "power2.out" }, 1.6);
+      window.__timelines["tele"] = tl;
+    })();
+  </script>
+</template>

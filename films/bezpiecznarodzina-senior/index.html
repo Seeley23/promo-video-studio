@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pl"
+  data-composition-variables='[
+    {"id":"color-ground","type":"color","label":"Tło","default":"#F7F7F7"},
+    {"id":"color-ink","type":"color","label":"Tekst","default":"#222222"},
+    {"id":"color-accent","type":"color","label":"Akcent","default":"#0400DA"},
+    {"id":"font-display","type":"string","label":"Font","default":"DM Sans"}
+  ]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "DM Sans"; font-style: normal; font-weight: 100 1000; font-display: block;
+        src: url(assets/fonts/dm-sans-latin-ext-wght-normal.woff2) format("woff2");
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+      @font-face { font-family: "DM Sans"; font-style: normal; font-weight: 100 1000; font-display: block;
+        src: url(assets/fonts/dm-sans-latin-wght-normal.woff2) format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+      :root {
+        --color-ground: #F7F7F7; --color-ink: #222222; --color-accent: #0400DA;
+        --color-navy: #0D1A48; --color-sky: #469CFF; --color-peach: #EFE3D5;
+        --color-green: #35BA2E; --color-yellow: #F4C61F; --color-lilac: #D8D8F0;
+        --font-display: "DM Sans";
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--color-ground); font-family: var(--font-display), sans-serif; color: var(--color-ink); }
+      #ground { position: absolute; inset: 0; background: var(--color-ground); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30" data-width="1920" data-height="1080">
+      <div id="ground"></div>
+      <div id="park" data-composition-id="park" data-composition-src="compositions/park.html" data-start="0" data-duration="6.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="fall" data-composition-id="fall" data-composition-src="compositions/fall.html" data-start="6" data-duration="6.6" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="alert" data-composition-id="alert" data-composition-src="compositions/alert.html" data-start="12" data-duration="6.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="tele" data-composition-id="tele" data-composition-src="compositions/tele.html" data-start="18" data-duration="6.6" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="endcard" data-composition-id="endcard" data-composition-src="compositions/endcard.html" data-start="24" data-duration="6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <!-- One soft accent when the alert reaches the caregiver's phone. -->
+      <audio id="sfx-alert" class="clip" src="assets/sfx/click-soft.mp3" data-start="13.3" data-duration="0.37" data-track-index="10" data-volume="0.35"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #fall-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    .fall-kick { font: 600 32px/1 "DM Sans"; color: var(--color-accent); letter-spacing: .01em; }
+    #fall-card { position: absolute; left: 1000px; top: 160px; width: 780px; height: 700px; border-radius: 40px; overflow: hidden; box-shadow: 0 30px 80px rgba(13,26,72,.14); }
+    #fall-card img { width: 780px; height: 700px; object-fit: cover; display: block; }
+    #fall-k { position: absolute; left: 140px; top: 400px; }
+    #fall-t { position: absolute; left: 140px; top: 460px; width: 760px; font: 700 72px/1.1 "DM Sans"; letter-spacing: -0.02em; color: var(--color-ink); }
+  </style>
+  <div id="root" data-composition-id="fall" data-width="1920" data-height="1080">
+    <div id="fall-stage" class="clip" data-start="0" data-duration="6.6" data-track-index="0">
+      <div id="fall-card"><img src="assets/img/wrist-fall.png" alt="Opaska SOS na nadgarstku z komunikatem Upadek" /></div>
+      <p id="fall-k" class="fall-kick">Czujnik upadku</p>
+      <h2 id="fall-t">Automatyczne powiadomienie do opiekuna</h2>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#fall-stage", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.inOut" }, 0);
+      tl.fromTo("#fall-card img", { scale: 1.08 }, { scale: 1.0, duration: 6.6, ease: "none" }, 0);
+      tl.fromTo("#fall-k", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 0.7);
+      tl.fromTo("#fall-t", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 1.1);
+      window.__timelines["fall"] = tl;
+    })();
+  </script>
+</template>
