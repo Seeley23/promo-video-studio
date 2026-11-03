@@ -1,0 +1,33 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #e-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    #e-title { position: absolute; left: 140px; top: 250px; width: 760px; font: 900 128px/1.02 "DM Sans"; letter-spacing: -0.03em; color: var(--color-ink); }
+    #e-title span { display: block; }
+    #e-sub { position: absolute; left: 144px; top: 690px; width: 720px; font: 400 34px/1.35 "DM Sans"; color: #444; }
+    #e-card { position: absolute; left: 930px; top: 150px; width: 860px; height: 614px; border-radius: 40px; overflow: hidden; background: #F4EEE8; box-shadow: 0 30px 80px rgba(13,26,72,.12); }
+    #e-vid { position: absolute; left: 930px; top: 150px; width: 860px; height: 614px; border-radius: 40px; object-fit: cover; display: block; }
+    #e-pill { position: absolute; width: auto; height: 84px; inset: auto; left: 1150px; top: 820px; height: 84px; padding: 0 40px; border-radius: 99px; background: var(--color-accent); color: #fff; display: flex; align-items: center; font: 600 34px/1 "DM Sans"; }
+  </style>
+  <div id="root" data-composition-id="hero" data-width="1920" data-height="1080">
+    <div id="e-stage" class="clip" data-start="0" data-duration="4" data-track-index="0">
+      <h1 id="e-title"><span>Spokój o</span><span>wszystkich</span><span>Bliskich</span></h1>
+      <p id="e-sub">Opaska SOS, smartwatche dla dzieci i lokalizatory GPS dla zwierząt w jednej aplikacji!</p>
+      <div id="e-card"></div>
+    </div>
+    <video id="e-vid" class="clip" src="assets/img/header.mp4" data-start="0" data-duration="4" data-media-start="0.5" data-track-index="1" muted playsinline></video>
+    <div id="e-pill" class="clip" data-start="0" data-duration="4" data-track-index="2">Aplikacja Bezpieczna Rodzina</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#e-title span", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.55, stagger: 0.12, ease: "expo.out" }, 0.05);
+      tl.fromTo("#e-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.4);
+      tl.fromTo("#e-card, #e-vid", { opacity: 0, scale: 0.9, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0.1);
+      tl.fromTo("#e-pill", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, 1.1);
+      tl.to("#e-card, #e-vid", { scale: 1.03, duration: 3, ease: "none" }, 0.8);
+      tl.to("#e-stage, #e-vid, #e-pill", { opacity: 0, duration: 0.2, ease: "power2.in" }, 3.8);
+      window.__timelines["hero"] = tl;
+    })();
+  </script>
+</template>

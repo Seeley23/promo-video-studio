@@ -1,0 +1,48 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #kids-stage { position: absolute; inset: 0; background: linear-gradient(135deg,#FFEDEF 0%,#E8F2FF 60%,#F7F7F7 100%); }
+    #kids-kick { position: absolute; left: 140px; top: 200px; height: 64px; padding: 0 30px; border-radius: 99px; background: #fff; color: var(--color-accent); display: flex; align-items: center; font: 700 30px/1 "DM Sans"; box-shadow: 0 8px 24px rgba(13,26,72,.08); }
+    #kids-title { position: absolute; left: 140px; top: 300px; width: 700px; font: 800 80px/1.05 "DM Sans"; letter-spacing: -0.02em; color: var(--color-accent); }
+    #kids-sub { position: absolute; left: 142px; top: 500px; width: 640px; font: 400 32px/1.35 "DM Sans"; color: #333; }
+    #kids-card { position: absolute; left: 880px; top: 230px; width: 520px; height: 600px; border-radius: 40px; background: #fff; box-shadow: 0 30px 80px rgba(13,26,72,.10); }
+    #kids-card img { position: absolute; left: 50%; top: 60px; width: 440px; transform: translateX(-50%); }
+    #kids-lab1 { position: absolute; left: 0; width: 520px; top: 470px; text-align: center; font: 400 28px/1 "DM Sans"; color: #444; }
+    #kids-lab2 { position: absolute; left: 0; width: 520px; top: 512px; text-align: center; font: 700 40px/1 "DM Sans"; color: var(--color-ink); }
+    #kids-phone { position: absolute; left: 1440px; top: 210px; width: 384px; height: auto; filter: drop-shadow(0 30px 40px rgba(13,26,72,.18)); }
+    #kids-tag { position: absolute; left: 1560px; top: 790px; height: 64px; padding: 0 28px 0 22px; border-radius: 99px; background: #fff; display: flex; align-items: center; gap: 12px; font: 700 28px/1 "DM Sans"; color: var(--color-accent); box-shadow: 0 10px 30px rgba(13,26,72,.12); }
+    #kids-tag i { width: 34px; height: 34px; border-radius: 50%; background: var(--color-accent); display: block; }
+    #kids-zone { position: absolute; left: 140px; top: 760px; width: 660px; height: 130px; border-radius: 32px; background: #fff; display: flex; align-items: center; gap: 24px; padding: 0 30px; box-shadow: 0 12px 36px rgba(13,26,72,.10); } #kids-zone img { width: 80px; height: 80px; } #kids-zone b { display: block; font: 700 34px/1.1 "DM Sans"; color: var(--color-ink); } #kids-zone span { display: block; font: 400 28px/1.3 "DM Sans"; color: #444; } #kids-ring { position: absolute; left: 1620px; top: 545px; width: 220px; height: 220px; margin: -110px 0 0 -110px; border-radius: 50%; border: 5px dashed var(--color-accent); background: rgba(4,0,218,.08); opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="kids" data-width="1920" data-height="1080">
+    <div id="kids-stage" class="clip" data-start="0" data-duration="5" data-track-index="0" data-layout-allow-overlap>
+      
+      <p id="kids-kick">Smartwatch Kids</p>
+      <h2 id="kids-title">Pierwszy telefon na nadgarstku</h2>
+      <p id="kids-sub">Stały kontakt i spokój dla rodzica – bez klasycznego smartfona.</p>
+      <div id="kids-card"><img src="assets/img/watch-lite.png" alt="Locon Watch Lite" /><p id="kids-lab1">Locon Watch</p><p id="kids-lab2">Lite</p></div>
+      <img id="kids-phone" src="assets/img/kid-app.png" alt="Aplikacja Bezpieczna Rodzina" />
+      <div id="kids-tag"><i></i>Aplikacja</div>
+      <div id="kids-zone"><img src="assets/img/ic-zones.png" alt="" /><div><b>Strefy bezpieczeństwa</b><span>Dodaj szkołę, dom czy zajęcia</span></div></div><div id="kids-ring"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#kids-kick", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+      tl.fromTo("#kids-title", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 0.2);
+      tl.fromTo("#kids-sub", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.4);
+      tl.fromTo("#kids-card", { opacity: 0, y: 80, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "expo.out" }, 0.1);
+      tl.fromTo("#kids-card img", { rotation: -8, scale: 0.85 }, { rotation: 0, scale: 1, duration: 0.9, ease: "back.out(1.4)" }, 0.25);
+      tl.fromTo("#kids-phone", { opacity: 0, x: 160, rotation: 6 }, { opacity: 1, x: 0, rotation: 0, duration: 0.8, ease: "expo.out" }, 0.55);
+      tl.fromTo("#kids-tag", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 1.1);
+      tl.to("#kids-phone", { y: -18, duration: 3.5, ease: "sine.inOut" }, 1.3);
+      tl.to("#kids-card", { y: -8, duration: 3.5, ease: "sine.inOut" }, 1.3);
+      tl.fromTo("#kids-zone",{opacity:0,y:40},{opacity:1,y:0,duration:0.55,ease:"expo.out"},1.9);
+      tl.fromTo("#kids-ring",{opacity:0,scale:0.3},{opacity:1,scale:1,duration:0.7,ease:"back.out(1.6)"},2.0);
+      tl.to("#kids-ring",{rotation:90,duration:2.5,ease:"none"},2.4);
+      tl.to("#kids-stage", { opacity: 0, duration: 0.2, ease: "power2.in" }, 5 - 0.2);
+      window.__timelines["kids"] = tl;
+    })();
+  </script>
+</template>

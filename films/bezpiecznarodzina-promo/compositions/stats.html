@@ -1,0 +1,35 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    #s-title { position: absolute; left: 0; width: 1920px; top: 120px; text-align: center; font: 800 80px/1 "DM Sans"; letter-spacing: -0.02em; color: var(--color-ink); }
+    #s-title em { font-style: normal; color: #fff; background: var(--color-accent); padding: 0 16px; border-radius: 12px; }
+    .s-tile { position: absolute; top: 300px; width: 540px; height: 520px; border-radius: 40px; padding: 56px 48px; }
+    #s-t1 { left: 105px; background: var(--color-accent); color: #fff; }
+    #s-t2 { left: 690px; background: var(--color-green); color: #fff; }
+    #s-t3 { left: 1275px; background: var(--color-yellow); color: var(--color-ink); }
+    .s-num { white-space: nowrap; font: 800 124px/1 "DM Sans"; letter-spacing: -0.03em; }
+    .s-lab { position: absolute; left: 48px; right: 48px; bottom: 56px; font: 600 40px/1.15 "DM Sans"; }
+  </style>
+  <div id="root" data-composition-id="stats" data-width="1920" data-height="1080">
+    <div id="s-stage" class="clip" data-start="0" data-duration="4" data-track-index="0">
+      <h2 id="s-title">Wszyscy Bliscy <em>w jednej aplikacji</em></h2>
+      <div class="s-tile" id="s-t1"><p class="s-num">1 mln+</p><p class="s-lab">Aktywnych Użytkowników</p></div>
+      <div class="s-tile" id="s-t2"><p class="s-num" id="s-rate">4.8</p><p class="s-lab">Ocena w sklepie</p></div>
+      <div class="s-tile" id="s-t3"><p class="s-num">24/7</p><p class="s-lab">Stała ochrona</p></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#s-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 0.05);
+      tl.fromTo(".s-tile", { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 0.65, stagger: 0.18, ease: "expo.out" }, 0.25);
+      tl.fromTo(".s-num", { clipPath: "inset(100% 0 0 0)", y: 40 }, { clipPath: "inset(0% 0 0 0)", y: 0, duration: 0.6, stagger: 0.18, ease: "power3.out" }, 0.55);
+      const r = { v: 0 };
+      tl.fromTo(r, { v: 0 }, { v: 4.8, duration: 1.0, ease: "power2.out", onUpdate: () => { document.querySelector("#s-rate").textContent = r.v.toFixed(1); } }, 0.75);
+      tl.to(".s-tile", { y: -12, duration: 2.2, stagger: 0.1, ease: "sine.inOut" }, 1.5);
+      tl.to("#s-stage", { opacity: 0, duration: 0.2, ease: "power2.in" }, 3.8);
+      window.__timelines["stats"] = tl;
+    })();
+  </script>
+</template>

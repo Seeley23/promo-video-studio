@@ -1,0 +1,37 @@
+{
+  "name": "Bezpieczna Rodzina",
+  "url": "bezpiecznarodzina.pl",
+  "language": "pl",
+  "colors": {
+    "ground": "#F7F7F7",
+    "card": "#FFFFFF",
+    "ink": "#222222",
+    "muted": "#444444",
+    "border": "#D8D8F0",
+    "accent": "#0400DA",
+    "accentInk": "#FFFFFF",
+    "navy": "#0D1A48",
+    "sky": "#469CFF",
+    "peach": "#EFE3D5",
+    "green": "#35BA2E",
+    "yellow": "#F4C61F"
+  },
+  "fonts": {
+    "display": { "family": "DM Sans", "weight": 800 },
+    "body": { "family": "DM Sans", "weight": 400 }
+  },
+  "logo": {
+    "file": "logo.svg",
+    "onDark": false,
+    "note": "https://bezpiecznarodzina.pl/full-logo.svg z nagłówka strony (granat #0D1A48 + niebieski #469CFF)."
+  },
+  "cta": {
+    "label": "Pobierz bezpłatnie już dziś.",
+    "url": "bezpiecznarodzina.pl"
+  },
+  "voice": { "provider": "none", "voiceId": "", "language": "pl" },
+  "source": {
+    "repo": "",
+    "notes": "Tylko strona (2026-11-03). Font i kolory z computed style (Playwright): body DM Sans, przycisk rgb(4,0,218), kafle statystyk próbkowane ze zrzutu. Zdjęcia z headless-cdn.bezpiecznarodzina.pl. Opaski Locon Life to wyrób medyczny klasy I: reklama musi nieść dopisek ze strony."
+  }
+}

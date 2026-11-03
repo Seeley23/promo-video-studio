@@ -1,0 +1,38 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #h-stage { position: absolute; inset: 0; background: var(--color-ground); }
+    #h-title { position: absolute; left: 0; width: 1920px; top: 96px; text-align: center; font: 800 84px/1 "DM Sans"; letter-spacing: -0.02em; color: var(--color-ink); }
+    .h-card { position: absolute; top: 270px; width: 540px; height: 660px; border-radius: 40px; background: linear-gradient(180deg, #F4EBE1 0%, var(--color-peach) 100%); overflow: hidden; }
+    #h-c2, #h-c3 { opacity: 0; }
+    #h-c1 { left: 105px; } #h-c2 { left: 690px; } #h-c3 { left: 1275px; }
+    .h-card img { position: absolute; left: 50%; bottom: 120px; height: 470px; width: auto; transform: translateX(-50%); }
+    .h-cap { position: absolute; left: 24px; right: 24px; white-space: nowrap; bottom: 30px; height: 76px; border-radius: 99px; background: #fff; display: flex; align-items: center; justify-content: center; font: 700 30px/1 "DM Sans"; color: var(--color-ink); }
+    .h-pin { position: absolute; top: 250px; width: 72px; height: 72px; margin-left: -36px; border-radius: 50% 50% 50% 0; background: var(--color-accent); transform: rotate(-45deg); box-shadow: 0 10px 24px rgba(4,0,218,.3); opacity: 0; }
+    .h-pin::after { content: ""; position: absolute; left: 22px; top: 22px; width: 28px; height: 28px; border-radius: 50%; background: #fff; }
+    #h-p1 { left: 375px; } #h-p2 { left: 960px; } #h-p3 { left: 1545px; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+    <div id="h-stage" class="clip" data-start="0" data-duration="4" data-track-index="0" data-layout-allow-overlap>
+      <h1 id="h-title">Nie trać Bliskich z oczu</h1>
+      <div class="h-card" id="h-c1"><img src="assets/img/cat-senior.png" alt="Senior z opaską SOS" /><p class="h-cap">Zobacz, jak ma się Senior</p></div>
+      <div class="h-card" id="h-c2"><img src="assets/img/cat-pet.png" alt="Pies i kot z lokalizatorami" /><p class="h-cap">Zobacz, gdzie pobiegł Twój pies</p></div>
+      <div class="h-card" id="h-c3"><img src="assets/img/cat-kid.png" alt="Dziecko ze smartwatchem" /><p class="h-cap">Zobacz, co robi Twoje dziecko</p></div>
+      <div class="h-pin" id="h-p1"></div><div class="h-pin" id="h-p2"></div><div class="h-pin" id="h-p3"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      [["#h-c1","#h-p1",0.0],["#h-c2","#h-p2",0.9],["#h-c3","#h-p3",1.7]].forEach(([c,p,t]) => {
+        tl.fromTo(c, { opacity: c === "#h-c1" ? 1 : 0, y: c === "#h-c1" ? 0 : 80 }, { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, t);
+        tl.fromTo(c + " img", { scale: 1.12 }, { scale: 1, transformOrigin: "50% 100%", duration: 1.2, ease: "power3.out" }, t);
+        tl.fromTo(p, { opacity: 0, y: -120 }, { opacity: 1, y: 0, duration: 0.45, ease: "bounce.out" }, t + 0.25);
+      });
+      tl.fromTo("#h-title", { scale: 1.04 }, { scale: 1, duration: 3.8, ease: "power1.out" }, 0);
+      tl.to(".h-card, .h-pin", { y: -10, duration: 1.5, ease: "sine.inOut" }, 2.5);
+      tl.to("#h-stage", { opacity: 0, duration: 0.2, ease: "power2.in" }, 3.8);
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>
