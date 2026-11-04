@@ -11,6 +11,7 @@ Szablony są uniwersalne. Marka to wymienny wkład w `brands/<marka>/`. Nigdy ni
 - `examples/boostnow-hyperframes/` – pierwszy gotowy film (HyperFrames). Wzorzec jakości i tempa, nie podstawa do kopiowania tekstów.
 - `.claude/skills/launch-video/` – skill launch-video (Remotion, MIT, harish-anumula/launch-video-skill).
 - `.claude/skills/video-shotcraft/` – skill video-shotcraft (Remotion, Apache-2.0, Vincentwei1021/video-shotcraft).
+- `.claude/skills/ffmpeg-skill/` – skill ffmpeg-skill (lokalny FFmpeg, MIT, kajisho5/ffmpeg-skill): cięcie, łączenie, napisy, kadrowanie 9:16/1:1, głośność (LUFS), eksport pod platformy, kontrola gotowego pliku. Do obróbki renderów i podkładania lektora/muzyki.
 - `films/<marka>-<nazwa>/` – projekty konkretnych filmów (tworzone przez agenta).
 
 ## Procedura dla agenta: „zrób film dla marki X”
